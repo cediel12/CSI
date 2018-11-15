@@ -5,18 +5,13 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace CSI.Home
+namespace CSI.Menu
 {
-    public partial class Signup : System.Web.UI.Page
+    public partial class Home : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-        }
 
-        protected void iniciarsesion(object sender, EventArgs e)
-        {
-            Response.Redirect("Login.aspx");
         }
     }
 }

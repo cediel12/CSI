@@ -12,19 +12,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="robots" content="all,follow">
     <!-- Bootstrap CSS-->
-    <link href="../../Estilos/Men/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../Estilos/Men/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <!-- Font Awesome CSS-->
-    <link href="../../Estilos/Men/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="../Estilos/Men/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
     <!-- Fontastic Custom icon font-->
-    <link href="../../Estilos/Men/css/fontastic.css" rel="stylesheet" />
+    <link href="../Estilos/Men/css/fontastic.css" rel="stylesheet" />
     <!-- Google fonts - Poppins -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
     <!-- theme stylesheet-->
-    <link href="../../Estilos/Men/css/style.default.css" rel="stylesheet" />
+    <link href="../Estilos/Men/css/style.default.css" rel="stylesheet" />
     <!-- Custom stylesheet - for your changes-->
-    <link href="../../Estilos/Men/css/custom.css" rel="stylesheet" />
+    <link href="../Estilos/Men/css/custom.css" rel="stylesheet" />
     <!-- Favicon-->
-    <link href="../../Estilos/Otro/img/logopagina.png" rel="icon">
+    <link href="../Estilos/Men/img/icono.ico" rel="icon"/>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -73,7 +73,8 @@
                         <!-- Sidebar Header-->
                         <div class="sidebar-header d-flex align-items-center">
                             <div class="avatar">
-                                <img src='<%= Session["ima"].ToString()%>' alt="..." class="img-fluid rounded-circle">
+                                <img src="../Estilos/Men/img/avatar-1.jpg" />
+                                <%--<img src='<%= Session["ima"].ToString()%>' alt="..." class="img-fluid rounded-circle">--%>
                             </div>
                             <div class="title">
                                 <h1 class="h4"><%= Session["Nombre"].ToString() %></></h1>
@@ -122,7 +123,7 @@
                             <div class="container-fluid">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <p>Eventium &copy; 2018</p>
+                                        <p>CiclyCaq &copy; 2018</p>
                                     </div>
                                 </div>
                             </div>
@@ -131,15 +132,15 @@
                 </div>
             </div>
             <!-- JavaScript files-->
-            <script src="../../Estilos/Men/vendor/jquery/jquery.min.js"></script>
-            <script src="../../Estilos/Men/vendor/popper.js/umd/popper.min.js"> </script>
-            <script src="../../Estilos/Men/vendor/bootstrap/js/bootstrap.min.js"></script>
-            <script src="../../Estilos/Men/vendor/jquery.cookie/jquery.cookie.js"> </script>
-            <script src="../../Estilos/Men/vendor/chart.js/Chart.min.js"></script>
-            <script src="../../Estilos/Men/vendor/jquery-validation/jquery.validate.min.js"></script>
-            <script src="../../Estilos/Men/js/charts-home.js"></script>
+            <script src="../Estilos/Men/vendor/jquery/jquery.js"></script>
+            <script src="../Estilos/Men/vendor/popper.js/umd/popper.min.js"> </script>
+            <script src="../Estilos/Men/vendor/bootstrap/js/bootstrap.min.js"></script>
+            <script src="../Estilos/Men/vendor/jquery.cookie/jquery.cookie.js"> </script>
+            <script src="../Estilos/Men/vendor/chart.js/Chart.min.js"></script>
+            <script src="../Estilos/Men/vendor/jquery-validation/jquery.validate.min.js"></script>
+            <script src="../Estilos/Men/js/charts-home.js"></script>
             <!-- Main File-->
-            <script src="../../Estilos/Men/js/front.js"></script>
+            <script src="../Estilos/Men/js/front.js"></script>
 
 
         </div>

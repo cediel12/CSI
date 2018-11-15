@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CSI.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,21 @@ namespace CSI.Menu
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            try
+            {
+                if (Session["Estado"].ToString() == "OK")
+                {
+                    MenuControlador me = new MenuControlador();
+                    Usuario u = new Usuario();
+                    me.CargarMenu(Session["roldefinido"].ToString(), menudinamico);
 
+                }
+
+            }
+            catch
+            {
+                Response.Redirect("../Inicio/Login.aspx");
+            }
         }
     }
 }
