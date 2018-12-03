@@ -12,6 +12,7 @@ namespace CSI.Menu
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
             try
             {
                 if (Session["Estado"].ToString() == "OK")
@@ -19,7 +20,7 @@ namespace CSI.Menu
                     MenuControlador me = new MenuControlador();
                     Usuario u = new Usuario();
                     me.CargarMenu(Session["roldefinido"].ToString(), menudinamico);
-
+                    
                 }
 
             }
@@ -27,6 +28,13 @@ namespace CSI.Menu
             {
                 Response.Redirect("../Inicio/Login.aspx");
             }
+
+
+        }
+
+        protected void salir(object sender, EventArgs e)
+        {
+
         }
     }
 }

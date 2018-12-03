@@ -32,6 +32,7 @@ namespace CSI.Home
                     dr = dt.Rows[0];
                     Session["Estado"] = "OK";
                     Session["IDUSER"] = dr["id_correo"].ToString();
+                    string iduser= dr["id_correo"].ToString();
                     //Session["correo"] = dr["correo"].ToString();
                     rol = dr["rol_usuario_id_rol_usuario"].ToString();
                     Session["roldefinido"]= dr["rol_usuario_id_rol_usuario"].ToString();
@@ -40,7 +41,7 @@ namespace CSI.Home
                         if (rol == "3")
                         {
                             Session["rol"] = "Administrador";
-                            admin = u.roladmin(rol);
+                            admin = u.roladmin(iduser);
                             if (admin.Rows.Count > 0)
                             {
                                 dadmin = admin.Rows[0];
@@ -50,7 +51,7 @@ namespace CSI.Home
                         else if (rol == "1")
                         {
                             Session["rol"] = "Cliente";
-                            cliente = u.roladmin(rol);
+                            cliente = u.roladmin(iduser);
                             if (admin.Rows.Count > 0)
                             {
                                 dcliente = admin.Rows[0];
@@ -60,7 +61,7 @@ namespace CSI.Home
                         else if (rol == "2")
                         {
                             Session["rol"] = "Empresa";
-                            empresa = u.roladmin(rol);
+                            empresa = u.roladmin(iduser);
                             if (admin.Rows.Count > 0)
                             {
                                 dempresa = admin.Rows[0];

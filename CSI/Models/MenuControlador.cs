@@ -5,12 +5,14 @@ using System.Linq;
 using System.Web;
 using System.Web.UI.HtmlControls;
 
+
 namespace CSI.Models
 {
     public class MenuControlador
     {
         public void CargarMenu(string Login, HtmlGenericControl MenuGeneral)
         {
+            Usuario u = new Usuario();
             Usuario Usuari = new Usuario();
             DataTable Data = Usuari.menu(Login);
 
@@ -19,9 +21,9 @@ namespace CSI.Models
             DataTable First_Level = Data.AsEnumerable().Select(row =>
             {
                 DataRow newRow = Data.NewRow();
-                newRow["Titulo"] = row.Field<string>("Titulo");
-                newRow["Icono"] = row.Field<string>("Icono");
-                newRow["idMenu"] = row.Field<Int32>("idMenu");
+                newRow["titulo"] = row.Field<string>("titulo");
+                newRow["icono"] = row.Field<string>("icono");
+                newRow["id_vista_aplicativo"] = row.Field<Int32>("id_vista_aplicativo");
                 return newRow;
             }).Distinct(DataRowComparer.Default).CopyToDataTable();
 
@@ -32,7 +34,7 @@ namespace CSI.Models
             foreach (DataRow it in Data.Rows)
             {
 
-                index = IsMenu(it, Nivel, "Menu_idMenu");
+                index = IsMenu(it, Nivel, "vista_id_vista_aplicativo");
                 Nivel[index].vistas.Add(new vista(it));
 
             }
@@ -67,6 +69,7 @@ namespace CSI.Models
             return -1;
         }
     }
+
     public class Menu
     {
         public int id;
@@ -140,7 +143,7 @@ namespace CSI.Models
 
         public vista(DataRow it)
         {
-            this.padre = Convert.ToInt32(it["icono"].ToString());
+            this.padre = Convert.ToInt32(it["vista_id_vista_aplicativo"].ToString());
             this.nombre = it["title"].ToString();
             this.icono = it["icon"].ToString();
             this.url = it["url"].ToString();

@@ -7,24 +7,17 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Eventoum</title>
+    <title>CicliCaq</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="robots" content="all,follow">
-    <!-- Bootstrap CSS-->
     <link href="../Estilos/Men/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <!-- Font Awesome CSS-->
     <link href="../Estilos/Men/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
-    <!-- Fontastic Custom icon font-->
     <link href="../Estilos/Men/css/fontastic.css" rel="stylesheet" />
-    <!-- Google fonts - Poppins -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
-    <!-- theme stylesheet-->
     <link href="../Estilos/Men/css/style.default.css" rel="stylesheet" />
-    <!-- Custom stylesheet - for your changes-->
     <link href="../Estilos/Men/css/custom.css" rel="stylesheet" />
-    <!-- Favicon-->
-    <link href="../Estilos/Men/img/icono.ico" rel="icon"/>
+    <link href="../Estilos/Men/img/icono.ico" rel="icon" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -48,8 +41,8 @@
                                 <div class="navbar-header">
                                     <!-- Navbar Brand -->
                                     <a href="Home.aspx" class="navbar-brand">
-                                        <div class="brand-text brand-big"><span>Eventium </span></div>
-                                        <div class="brand-text brand-small"><strong>E</strong></div>
+                                        <div class="brand-text brand-big"><span>CicliCaq </span></div>
+                                        <div class="brand-text brand-small"><strong>C</strong></div>
                                     </a>
                                     <!-- Toggle Button-->
                                     <a id="toggle-btn" href="Home.aspx" class="menu-btn active"><span></span><span></span><span></span></a>
@@ -72,10 +65,6 @@
                     <nav class="side-navbar">
                         <!-- Sidebar Header-->
                         <div class="sidebar-header d-flex align-items-center">
-                            <div class="avatar">
-                                <img src="../Estilos/Men/img/avatar-1.jpg" />
-                                <%--<img src='<%= Session["ima"].ToString()%>' alt="..." class="img-fluid rounded-circle">--%>
-                            </div>
                             <div class="title">
                                 <h1 class="h4"><%= Session["Nombre"].ToString() %></></h1>
                                 <p><%= Session["rol"].ToString() %></p>
@@ -88,28 +77,15 @@
                                 <li><a href="../Menu/Home.aspx"><i class="menu-icon fa fa-home"></i>Home </a></li>
                             </ul>
                         </div>
-                        <%--<ul class="list-unstyled">
-                            <li><a href="tables.html"><i class="icon-grid"></i>Tables </a></li>
-                            <li><a href="charts.html"><i class="fa fa-bar-chart"></i>Charts </a></li>
-                            <li><a href="forms.html"><i class="icon-padnote"></i>Forms </a></li>
-                            <li>
-                                <a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"><i class="icon-interface-windows"></i>Example dropdown</a>
-                                <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
-                                    <li><a href="#">Page</a></li>
-                                    <li><a href="#">Page</a></li>
-                                    <li><a href="#">Page</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="login.html"><i class="icon-interface-windows"></i>Login page </a></li>
-                        </ul>--%>
                     </nav>
                     <div class="content-inner">
                         <!-- Page Header-->
                         <header class="page-header">
                             <div class="container-fluid">
-                                <h2 class="no-margin-bottom">Eventium</h2>
+                                <h2 class="no-margin-bottom">CicliCaq</h2>
                             </div>
                         </header>
+                        
                         <!-- Dashboard Header Section    -->
                         <section class="dashboard-header">
                             <div class="container-fluid">
@@ -123,7 +99,7 @@
                             <div class="container-fluid">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <p>CiclyCaq &copy; 2018</p>
+                                        <p>CicliCaq &copy; 2018</p>
                                     </div>
                                 </div>
                             </div>
@@ -133,16 +109,14 @@
             </div>
             <!-- JavaScript files-->
             <script src="../Estilos/Men/vendor/jquery/jquery.js"></script>
-            <script src="../Estilos/Men/vendor/popper.js/umd/popper.min.js"> </script>
+            <script src="../Estilos/Men/vendor/popper.js/umd/popper.min.js"></script>
             <script src="../Estilos/Men/vendor/bootstrap/js/bootstrap.min.js"></script>
-            <script src="../Estilos/Men/vendor/jquery.cookie/jquery.cookie.js"> </script>
+            <script src="../Estilos/Men/vendor/jquery.cookie/jquery.cookie.js"></script>
             <script src="../Estilos/Men/vendor/chart.js/Chart.min.js"></script>
             <script src="../Estilos/Men/vendor/jquery-validation/jquery.validate.min.js"></script>
             <script src="../Estilos/Men/js/charts-home.js"></script>
             <!-- Main File-->
             <script src="../Estilos/Men/js/front.js"></script>
-
-
         </div>
     </form>
 </body>

@@ -99,38 +99,6 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Estilos\Men\img\icono.ico" />
-    <Content Include="Home\Login.aspx" />
-    <Content Include="Home\Signup.aspx" />
-    <Content Include="Menu\Home.aspx" />
-    <Content Include="packages.config" />
-    <Content Include="ApplicationInsights.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Menu\Home.Master" />
-    <Content Include="Estilos\Men\data\addresses.json" />
-    <Content Include="Estilos\Men\data\countries.json" />
-    <Content Include="Estilos\Men\fonts\dashboard.eot" />
-    <Content Include="Estilos\Men\fonts\dashboard.ttf" />
-    <Content Include="Estilos\Men\fonts\dashboard.woff" />
-    <Content Include="Estilos\Men\icons-reference\fonts\dashboard.eot" />
-    <Content Include="Estilos\Men\icons-reference\fonts\dashboard.ttf" />
-    <Content Include="Estilos\Men\icons-reference\fonts\dashboard.woff" />
-    <Content Include="Estilos\Men\vendor\font-awesome\fonts\fontawesome-webfont.eot" />
-    <Content Include="Estilos\Men\vendor\font-awesome\fonts\fontawesome-webfont.ttf" />
-    <Content Include="Estilos\Men\vendor\font-awesome\fonts\fontawesome-webfont.woff" />
-    <Content Include="Estilos\Men\vendor\font-awesome\fonts\fontawesome-webfont.woff2" />
-    <Content Include="Estilos\Men\vendor\font-awesome\fonts\FontAwesome.otf" />
-    <Content Include="Estilos\Men\vendor\jquery.cookie\component.json" />
-    <Content Include="Estilos\Men\vendor\jquery.cookie\cookie.jquery.json" />
-    <None Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
-    <None Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Estilos\Men\css\custom.css" />
     <Content Include="Estilos\Men\css\fontastic.css" />
     <Content Include="Estilos\Men\css\style.blue.css" />
@@ -140,8 +108,16 @@
     <Content Include="Estilos\Men\css\style.red.css" />
     <Content Include="Estilos\Men\css\style.sea.css" />
     <Content Include="Estilos\Men\css\style.violet.css" />
+    <Content Include="Estilos\Men\data\addresses.json" />
+    <Content Include="Estilos\Men\data\countries.json" />
+    <Content Include="Estilos\Men\fonts\dashboard.eot" />
     <Content Include="Estilos\Men\fonts\dashboard.svg" />
+    <Content Include="Estilos\Men\fonts\dashboard.ttf" />
+    <Content Include="Estilos\Men\fonts\dashboard.woff" />
+    <Content Include="Estilos\Men\icons-reference\fonts\dashboard.eot" />
     <Content Include="Estilos\Men\icons-reference\fonts\dashboard.svg" />
+    <Content Include="Estilos\Men\icons-reference\fonts\dashboard.ttf" />
+    <Content Include="Estilos\Men\icons-reference\fonts\dashboard.woff" />
     <Content Include="Estilos\Men\icons-reference\icons-reference.html" />
     <Content Include="Estilos\Men\icons-reference\styles.css" />
     <Content Include="Estilos\Men\img\avatar-0.jpg" />
@@ -421,6 +397,7 @@
     <Content Include="Estilos\Men\img\flags\16\_united-nations.png" />
     <Content Include="Estilos\Men\img\flags\16\_unknown.png" />
     <Content Include="Estilos\Men\img\flags\16\_wales.png" />
+    <Content Include="Estilos\Men\img\icono.ico" />
     <Content Include="Estilos\Men\img\map-close.png" />
     <Content Include="Estilos\Men\img\map-marker-blue.png" />
     <Content Include="Estilos\Men\img\map-marker-default.png" />
@@ -447,6 +424,8 @@
     <Content Include="Estilos\Men\js\charts-custom.js" />
     <Content Include="Estilos\Men\js\charts-home.js" />
     <Content Include="Estilos\Men\js\front.js" />
+    <Content Include="Estilos\Men\vendor\animate\animate.css" />
+    <Content Include="Estilos\Men\vendor\animate\animate.min.css" />
     <Content Include="Estilos\Men\vendor\bootstrap\css\bootstrap-grid.css" />
     <Content Include="Estilos\Men\vendor\bootstrap\css\bootstrap-grid.min.css" />
     <Content Include="Estilos\Men\vendor\bootstrap\css\bootstrap-reboot.css" />
@@ -461,9 +440,17 @@
     <Content Include="Estilos\Men\vendor\chart.js\Chart.bundle.min.js" />
     <Content Include="Estilos\Men\vendor\chart.js\Chart.js" />
     <Content Include="Estilos\Men\vendor\chart.js\Chart.min.js" />
+    <Content Include="Estilos\Men\vendor\counterup\counterup.min.js" />
+    <Content Include="Estilos\Men\vendor\easing\easing.js" />
+    <Content Include="Estilos\Men\vendor\easing\easing.min.js" />
     <Content Include="Estilos\Men\vendor\font-awesome\css\font-awesome.css" />
     <Content Include="Estilos\Men\vendor\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Estilos\Men\vendor\font-awesome\fonts\fontawesome-webfont.eot" />
     <Content Include="Estilos\Men\vendor\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Estilos\Men\vendor\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Estilos\Men\vendor\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Estilos\Men\vendor\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Estilos\Men\vendor\font-awesome\fonts\FontAwesome.otf" />
     <Content Include="Estilos\Men\vendor\font-awesome\HELP-US-OUT.txt" />
     <Content Include="Estilos\Men\vendor\jquery-validation\additional-methods.js" />
     <Content Include="Estilos\Men\vendor\jquery-validation\jquery.validate.js" />
@@ -529,9 +516,12 @@
     <Content Include="Estilos\Men\vendor\jquery-validation\localization\methods_fi.js" />
     <Content Include="Estilos\Men\vendor\jquery-validation\localization\methods_nl.js" />
     <Content Include="Estilos\Men\vendor\jquery-validation\localization\methods_pt.js" />
+    <Content Include="Estilos\Men\vendor\jquery.cookie\component.json" />
+    <Content Include="Estilos\Men\vendor\jquery.cookie\cookie.jquery.json" />
     <Content Include="Estilos\Men\vendor\jquery.cookie\jquery.cookie.js" />
     <Content Include="Estilos\Men\vendor\jquery.cookie\MIT-LICENSE.txt" />
     <Content Include="Estilos\Men\vendor\jquery\core.js" />
+    <Content Include="Estilos\Men\vendor\jquery\jquery-migrate.min.js" />
     <Content Include="Estilos\Men\vendor\jquery\jquery.js" />
     <Content Include="Estilos\Men\vendor\jquery\jquery.min.js" />
     <Content Include="Estilos\Men\vendor\jquery\jquery.slim.js" />
@@ -548,6 +538,129 @@
     <Content Include="Estilos\Men\vendor\popper.js\umd\popper-utils.min.js" />
     <Content Include="Estilos\Men\vendor\popper.js\umd\popper.js" />
     <Content Include="Estilos\Men\vendor\popper.js\umd\popper.min.js" />
+    <Content Include="Estilos\Men\vendor\superfish\hoverIntent.js" />
+    <Content Include="Estilos\Men\vendor\superfish\superfish.js" />
+    <Content Include="Estilos\Men\vendor\superfish\superfish.min.js" />
+    <Content Include="Estilos\Men\vendor\waypoints\waypoints.min.js" />
+    <Content Include="Estilos\Men\vendor\wow\wow.js" />
+    <Content Include="Estilos\Men\vendor\wow\wow.min.js" />
+    <Content Include="Estilos\styles.css" />
+    <Content Include="Estilos\Tabla\css\animate.css" />
+    <Content Include="Estilos\Tabla\css\bootstrap-select.css" />
+    <Content Include="Estilos\Tabla\css\bootstrap.css" />
+    <Content Include="Estilos\Tabla\css\bootstrap.min.css" />
+    <Content Include="Estilos\Tabla\css\cs-skin-elastic.css" />
+    <Content Include="Estilos\Tabla\css\flag-icon.min.css" />
+    <Content Include="Estilos\Tabla\css\font-awesome.min.css" />
+    <Content Include="Estilos\Tabla\css\lib\chosen\chosen-sprite%402x.png" />
+    <Content Include="Estilos\Tabla\css\lib\chosen\chosen-sprite.png" />
+    <Content Include="Estilos\Tabla\css\lib\chosen\chosen.css" />
+    <Content Include="Estilos\Tabla\css\lib\chosen\chosen.min.css" />
+    <Content Include="Estilos\Tabla\css\lib\datatable\buttons.bootstrap.min.css" />
+    <Content Include="Estilos\Tabla\css\lib\datatable\buttons.dataTables.min.css" />
+    <Content Include="Estilos\Tabla\css\lib\datatable\dataTables.bootstrap.min.css" />
+    <Content Include="Estilos\Tabla\css\lib\vector-map\jqvmap.min.css" />
+    <Content Include="Estilos\Tabla\css\normalize.css" />
+    <Content Include="Estilos\Tabla\css\style.css" />
+    <Content Include="Estilos\Tabla\css\themify-icons.css" />
+    <Content Include="Estilos\Tabla\css\variables.css" />
+    <Content Include="Estilos\Tabla\js\chartjs.min.js" />
+    <Content Include="Estilos\Tabla\js\dashboard.js" />
+    <Content Include="Estilos\Tabla\js\index.html" />
+    <Content Include="Estilos\Tabla\js\less.min.js" />
+    <Content Include="Estilos\Tabla\js\lib\chart-js\Chart.bundle.js" />
+    <Content Include="Estilos\Tabla\js\lib\chart-js\chartjs-init.js" />
+    <Content Include="Estilos\Tabla\js\lib\chosen\chosen.jquery.js" />
+    <Content Include="Estilos\Tabla\js\lib\chosen\chosen.jquery.min.js" />
+    <Content Include="Estilos\Tabla\js\lib\chosen\chosen.proto.js" />
+    <Content Include="Estilos\Tabla\js\lib\chosen\chosen.proto.min.js" />
+    <Content Include="Estilos\Tabla\js\lib\data-table\buttons.bootstrap.min.js" />
+    <Content Include="Estilos\Tabla\js\lib\data-table\buttons.colVis.min.js" />
+    <Content Include="Estilos\Tabla\js\lib\data-table\buttons.flash.min.js" />
+    <Content Include="Estilos\Tabla\js\lib\data-table\buttons.html5.min.js" />
+    <Content Include="Estilos\Tabla\js\lib\data-table\buttons.print.min.js" />
+    <Content Include="Estilos\Tabla\js\lib\data-table\datatables-init.js" />
+    <Content Include="Estilos\Tabla\js\lib\data-table\dataTables.bootstrap.min.js" />
+    <Content Include="Estilos\Tabla\js\lib\data-table\dataTables.buttons.min.js" />
+    <Content Include="Estilos\Tabla\js\lib\data-table\datatables.min.js" />
+    <Content Include="Estilos\Tabla\js\lib\data-table\jquery-1.12.4.js" />
+    <Content Include="Estilos\Tabla\js\lib\data-table\jquery.dataTables.min.js" />
+    <Content Include="Estilos\Tabla\js\lib\data-table\jszip.min.js" />
+    <Content Include="Estilos\Tabla\js\lib\data-table\pdfmake.min.js" />
+    <Content Include="Estilos\Tabla\js\lib\data-table\vfs_fonts.js" />
+    <Content Include="Estilos\Tabla\js\lib\flot-chart\curvedLines.js" />
+    <Content Include="Estilos\Tabla\js\lib\flot-chart\excanvas.min.js" />
+    <Content Include="Estilos\Tabla\js\lib\flot-chart\flot-chart-init.js" />
+    <Content Include="Estilos\Tabla\js\lib\flot-chart\flot-tooltip\jquery.flot.tooltip.min.js" />
+    <Content Include="Estilos\Tabla\js\lib\flot-chart\jquery.flot.categories.js" />
+    <Content Include="Estilos\Tabla\js\lib\flot-chart\jquery.flot.crosshair.js" />
+    <Content Include="Estilos\Tabla\js\lib\flot-chart\jquery.flot.js" />
+    <Content Include="Estilos\Tabla\js\lib\flot-chart\jquery.flot.pie.js" />
+    <Content Include="Estilos\Tabla\js\lib\flot-chart\jquery.flot.resize.js" />
+    <Content Include="Estilos\Tabla\js\lib\flot-chart\jquery.flot.stack.js" />
+    <Content Include="Estilos\Tabla\js\lib\flot-chart\jquery.flot.threshold.js" />
+    <Content Include="Estilos\Tabla\js\lib\flot-chart\jquery.flot.time.js" />
+    <Content Include="Estilos\Tabla\js\lib\gauge\gauge.js" />
+    <Content Include="Estilos\Tabla\js\lib\gmap\gmap.init.js" />
+    <Content Include="Estilos\Tabla\js\lib\gmap\gmapApi.js" />
+    <Content Include="Estilos\Tabla\js\lib\gmap\gmaps.js" />
+    <Content Include="Estilos\Tabla\js\lib\gmap\gmaps.min.js" />
+    <Content Include="Estilos\Tabla\js\lib\peitychart\jquery.peity.min.js" />
+    <Content Include="Estilos\Tabla\js\lib\peitychart\peitychart.init.js" />
+    <Content Include="Estilos\Tabla\js\lib\vector-map\country\jquery.vmap.algeria.js" />
+    <Content Include="Estilos\Tabla\js\lib\vector-map\country\jquery.vmap.argentina.js" />
+    <Content Include="Estilos\Tabla\js\lib\vector-map\country\jquery.vmap.brazil.js" />
+    <Content Include="Estilos\Tabla\js\lib\vector-map\country\jquery.vmap.europe.js" />
+    <Content Include="Estilos\Tabla\js\lib\vector-map\country\jquery.vmap.france.js" />
+    <Content Include="Estilos\Tabla\js\lib\vector-map\country\jquery.vmap.germany.js" />
+    <Content Include="Estilos\Tabla\js\lib\vector-map\country\jquery.vmap.greece.js" />
+    <Content Include="Estilos\Tabla\js\lib\vector-map\country\jquery.vmap.iran.js" />
+    <Content Include="Estilos\Tabla\js\lib\vector-map\country\jquery.vmap.iraq.js" />
+    <Content Include="Estilos\Tabla\js\lib\vector-map\country\jquery.vmap.russia.js" />
+    <Content Include="Estilos\Tabla\js\lib\vector-map\country\jquery.vmap.tunisia.js" />
+    <Content Include="Estilos\Tabla\js\lib\vector-map\country\jquery.vmap.turkey.js" />
+    <Content Include="Estilos\Tabla\js\lib\vector-map\country\jquery.vmap.usa.js" />
+    <Content Include="Estilos\Tabla\js\lib\vector-map\country\jquery.vmap.world.js" />
+    <Content Include="Estilos\Tabla\js\lib\vector-map\jquery.vmap.js" />
+    <Content Include="Estilos\Tabla\js\lib\vector-map\jquery.vmap.min.js" />
+    <Content Include="Estilos\Tabla\js\lib\vector-map\jquery.vmap.sampledata.js" />
+    <Content Include="Estilos\Tabla\js\lib\vector-map\vector.init.js" />
+    <Content Include="Estilos\Tabla\js\main.js" />
+    <Content Include="Estilos\Tabla\js\plugins.js" />
+    <Content Include="Estilos\Tabla\js\popper.min.js" />
+    <Content Include="Estilos\Tabla\js\selectFx.js" />
+    <Content Include="Estilos\Tabla\js\vendor\index.html" />
+    <Content Include="Estilos\Tabla\js\vendor\jquery-1.11.3.min.js" />
+    <Content Include="Estilos\Tabla\js\vendor\jquery-2.1.4.min.js" />
+    <Content Include="Estilos\Tabla\js\vendor\modernizr-2.8.3.min.js" />
+    <Content Include="Estilos\Tabla\js\widgets.js" />
+    <Content Include="Home\Login.aspx" />
+    <Content Include="Home\Signup.aspx" />
+    <Content Include="Menu\Alquiladas.aspx" />
+    <Content Include="Menu\CrearBicicleta.aspx" />
+    <Content Include="Menu\CrearEvento.aspx" />
+    <Content Include="Menu\EventosIncritos.aspx" />
+    <Content Include="Menu\Home.aspx" />
+    <Content Include="Menu\ListaAlquiler.aspx" />
+    <Content Include="Menu\ListaBicicletas.aspx" />
+    <Content Include="Menu\ListaEventos.aspx" />
+    <Content Include="Menu\ListaEventosInscritos.aspx" />
+    <Content Include="packages.config" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Menu\Home.Master" />
+    <Content Include="Estilos\Tabla\css\bootstrap.css.map" />
+    <Content Include="Estilos\Tabla\css\bootstrap.min.css.map" />
+    <Content Include="Estilos\Tabla\css\style.css.map" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="scripts\ai.0.22.9-build00167.js" />
     <Content Include="scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Web.config" />
@@ -567,6 +680,34 @@
     <Compile Include="Home\Signup.aspx.designer.cs">
       <DependentUpon>Signup.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Menu\Alquiladas.aspx.cs">
+      <DependentUpon>Alquiladas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Menu\Alquiladas.aspx.designer.cs">
+      <DependentUpon>Alquiladas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Menu\CrearBicicleta.aspx.cs">
+      <DependentUpon>CrearBicicleta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Menu\CrearBicicleta.aspx.designer.cs">
+      <DependentUpon>CrearBicicleta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Menu\CrearEvento.aspx.cs">
+      <DependentUpon>CrearEvento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Menu\CrearEvento.aspx.designer.cs">
+      <DependentUpon>CrearEvento.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Menu\EventosIncritos.aspx.cs">
+      <DependentUpon>EventosIncritos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Menu\EventosIncritos.aspx.designer.cs">
+      <DependentUpon>EventosIncritos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Menu\Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -580,6 +721,34 @@
     </Compile>
     <Compile Include="Menu\Home.Master.designer.cs">
       <DependentUpon>Home.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Menu\ListaAlquiler.aspx.cs">
+      <DependentUpon>ListaAlquiler.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Menu\ListaAlquiler.aspx.designer.cs">
+      <DependentUpon>ListaAlquiler.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Menu\ListaBicicletas.aspx.cs">
+      <DependentUpon>ListaBicicletas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Menu\ListaBicicletas.aspx.designer.cs">
+      <DependentUpon>ListaBicicletas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Menu\ListaEventos.aspx.cs">
+      <DependentUpon>ListaEventos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Menu\ListaEventos.aspx.designer.cs">
+      <DependentUpon>ListaEventos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Menu\ListaEventosInscritos.aspx.cs">
+      <DependentUpon>ListaEventosInscritos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Menu\ListaEventosInscritos.aspx.designer.cs">
+      <DependentUpon>ListaEventosInscritos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\Conexion.cs" />
     <Compile Include="Models\MenuControlador.cs" />
