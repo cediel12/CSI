@@ -26,7 +26,7 @@ namespace CSI.Menu
             }
             catch
             {
-                Response.Redirect("../Inicio/Login.aspx");
+                Response.Redirect("../Home/Login.aspx");
             }
 
 

@@ -10,6 +10,6 @@
 namespace CSI.Menu {
     
     
-    public partial class EventosIncritos {
+    public partial class GestionarUsuario {
     }
 }

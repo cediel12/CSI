@@ -51,21 +51,22 @@ namespace CSI.Home
                         else if (rol == "1")
                         {
                             Session["rol"] = "Cliente";
-                            cliente = u.roladmin(iduser);
-                            if (admin.Rows.Count > 0)
+                            cliente = u.rolcliente(iduser);
+                            if (cliente.Rows.Count > 0)
                             {
-                                dcliente = admin.Rows[0];
+                                dcliente = cliente.Rows[0];
                                 Session["Nombre"] = dcliente["nombre_cliente"].ToString() + " " + dcliente["apellido_cliente"].ToString();
                             }
                         }
                         else if (rol == "2")
                         {
                             Session["rol"] = "Empresa";
-                            empresa = u.roladmin(iduser);
-                            if (admin.Rows.Count > 0)
+                            empresa = u.rolempresa(iduser);
+                            if (empresa.Rows.Count > 0)
                             {
-                                dempresa = admin.Rows[0];
+                                dempresa = empresa.Rows[0];
                                 Session["Nombre"] = dempresa["nombre_empresa"].ToString();
+                                Session["IDEMPRESA"] = dempresa["id_empresa"];
                             }
                         }
                     }

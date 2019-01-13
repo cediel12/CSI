@@ -13,15 +13,24 @@ namespace CSI.Menu
         Usuario u = new Usuario();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["Estado"].ToString() != "OK")
+            try
             {
-                Response.Redirect("../Inicio/Login.aspx");
+                if (Session["Estado"].ToString() != "OK")
+                {
+                    Response.Redirect("../Home/Login.aspx");
+                }
+                if (!IsPostBack)
+                {
+                    lista.DataSource = u.ConsultarBicicletas();
+                    lista.DataBind();
+                }
             }
-            if (!IsPostBack)
+            catch
             {
-                lista.DataSource = u.ConsultarBicicletas();
-                lista.DataBind();
+                Response.Redirect("../Home/Login.aspx");
             }
+
+
         }
         public void Unnamed_Command(object sender, CommandEventArgs e)
         {

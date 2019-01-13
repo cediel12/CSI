@@ -11,7 +11,17 @@ namespace CSI.Menu
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            try
+            {
+                if (Session["Estado"].ToString() != "OK")
+                {
+                    Response.Redirect("../Home/Login.aspx");
+                }
+            }
+            catch
+            {
+                Response.Redirect("../Home/Login.aspx");
+            }
         }
     }
 }

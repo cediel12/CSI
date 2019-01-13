@@ -636,10 +636,9 @@
     <Content Include="Estilos\Tabla\js\widgets.js" />
     <Content Include="Home\Login.aspx" />
     <Content Include="Home\Signup.aspx" />
-    <Content Include="Menu\Alquiladas.aspx" />
     <Content Include="Menu\CrearBicicleta.aspx" />
     <Content Include="Menu\CrearEvento.aspx" />
-    <Content Include="Menu\EventosIncritos.aspx" />
+    <Content Include="Menu\GestionarUsuario.aspx" />
     <Content Include="Menu\Home.aspx" />
     <Content Include="Menu\ListaAlquiler.aspx" />
     <Content Include="Menu\ListaBicicletas.aspx" />
@@ -680,13 +679,6 @@
     <Compile Include="Home\Signup.aspx.designer.cs">
       <DependentUpon>Signup.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Menu\Alquiladas.aspx.cs">
-      <DependentUpon>Alquiladas.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Menu\Alquiladas.aspx.designer.cs">
-      <DependentUpon>Alquiladas.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Menu\CrearBicicleta.aspx.cs">
       <DependentUpon>CrearBicicleta.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -701,12 +693,12 @@
     <Compile Include="Menu\CrearEvento.aspx.designer.cs">
       <DependentUpon>CrearEvento.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Menu\EventosIncritos.aspx.cs">
-      <DependentUpon>EventosIncritos.aspx</DependentUpon>
+    <Compile Include="Menu\GestionarUsuario.aspx.cs">
+      <DependentUpon>GestionarUsuario.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Menu\EventosIncritos.aspx.designer.cs">
-      <DependentUpon>EventosIncritos.aspx</DependentUpon>
+    <Compile Include="Menu\GestionarUsuario.aspx.designer.cs">
+      <DependentUpon>GestionarUsuario.aspx</DependentUpon>
     </Compile>
     <Compile Include="Menu\Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>

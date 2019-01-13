@@ -33,7 +33,7 @@ namespace CSI.Models
         public DataTable menu(string idCuenta)
         {
 
-            string sql = "select  vista_aplicativo.id_vista_aplicativo,vista_aplicativo.titulo, vista_aplicativo.icono, menu.vista_id_vista_aplicativo, menu.title, menu.url, menu.idmenu,menu.icon from cilcicaq.menu inner join cilcicaq.vista_aplicativo on menu.vista_id_vista_aplicativo=vista_aplicativo.id_vista_aplicativo inner join cilcicaq.rol_usuario_has_vista_aplicativo on vista_aplicativo.id_vista_aplicativo=rol_usuario_has_vista_aplicativo.vista_aplicativo_id_vista_aplicativo inner join cilcicaq.rol_usuario on rol_usuario_has_vista_aplicativo.rol_usuario_id_rol_usuario=rol_usuario.id_rol_usuario where rol_usuario.id_rol_usuario=" + idCuenta + "; ";
+            string sql = "select  vista_aplicativo.id_vista_aplicativo,vista_aplicativo.titulo, vista_aplicativo.icono, menu.vista_id_vista_aplicativo, menu.title, menu.url, menu.idmenu,menu.icon from cilcicaq.menu inner join cilcicaq.vista_aplicativo on menu.vista_id_vista_aplicativo=vista_aplicativo.id_vista_aplicativo inner join cilcicaq.rol_usuario_has_menu on menu.idmenu=rol_usuario_has_menu.menu_id_menu inner join cilcicaq.rol_usuario on rol_usuario_has_menu.rol_usuario_id_rol_usuario=rol_usuario.id_rol_usuario where rol_usuario.id_rol_usuario=" + idCuenta + "; ";
             return co.EjecutarConsulta(sql, CommandType.Text);
         }
         public DataTable ConsultarEventos()
@@ -46,6 +46,17 @@ namespace CSI.Models
         {
 
             string sql = "SELECT id_bicicleta,nombre_bicicleta, descripcion_bicicleta, estado_bicicleta,nombre_tipo_bicicleta,nombre_empresa from cilcicaq.bicicleta inner join cilcicaq.empresa on id_empresa=empresa_id_empresa inner join cilcicaq.tipo_bicicleta on id_tipo_bicicleta=tipo_bicicleta_id_bicicleta;";
+            return co.EjecutarConsulta(sql, CommandType.Text);
+        }
+        public bool crear_bicicleta(string nombrebicicleta, int idempresa, int idtipobicicleta, int valor)
+        {
+            string[] sql = new string[1];
+            sql[0] = "CALL `cilcicaq`.`crear_bicicleta`('" + nombrebicicleta + "','" + idempresa + "'," + idtipobicicleta + valor +")";
+            return co.RealizarTransaccion(sql);
+        }
+        public DataTable TipoBicicletas()
+        {
+            string sql = "SELECT * FROM cilcicaq.tipo_bicicleta;";
             return co.EjecutarConsulta(sql, CommandType.Text);
         }
 
