@@ -45,17 +45,16 @@ namespace CSI.Menu
         protected void crear_bicicleta(object sender, EventArgs e)
         {
             int selection = 0;
-            if (eventos.SelectedIndex > 0)
+            selection = Convert.ToInt32(eventos.SelectedIndex);
+            if (u.crear_bicicleta(nombrebici.Text, Convert.ToInt32(Session["IDEMPRESA"].ToString()), selection, Convert.ToInt32(valor.Text)))
             {
-                selection = Convert.ToInt32(eventos.SelectedIndex);
-                if (u.crear_bicicleta(nombrebici.Text, Convert.ToInt32(Session["IDEMPRESA"].ToString()), selection, 1))
-                {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Bicicleta creada correctamente');", true);
-                }else
-                {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Bicicleta no se creada correctamente');", true);
-                }
+                ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Bicicleta creada correctamente');", true);
             }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Bicicleta no se creada correctamente');", true);
+            }
+
             //if (u.registrarusuarioadmin(usuario.Text, contra.Text, nombre.Text, apellido.Text, correo.Text, Int32.Parse(rol.Text), Convert.ToInt32(cedula.Text)) == true)
             //{
             //    ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('El usuario " + nombre.Text + " se creo correctamente');", true);

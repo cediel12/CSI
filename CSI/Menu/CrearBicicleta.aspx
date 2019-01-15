@@ -24,7 +24,6 @@
             <div class="form-group">
                 <label for="first-name">Tipo de Bicicleta</label>
             <asp:DropDownList ID="eventos" class="form-control" AppendDataBoundItems="true" DataTextField="media_name" DataValueField="media_id" runat="server">
-                <asp:ListItem>Tipo de Bicicleta</asp:ListItem>
             </asp:DropDownList>
         </div>
             <div class="clearfix"></div>

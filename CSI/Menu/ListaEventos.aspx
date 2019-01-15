@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Menu/Home.Master" AutoEventWireup="true" CodeBehind="ListaEventos.aspx.cs" Inherits="CSI.Menu.ListaEventos" %>
+﻿<%@ Page Title="" Language="C#" EnableEventValidation="false" MasterPageFile="~/Menu/Home.Master" AutoEventWireup="true" CodeBehind="ListaEventos.aspx.cs" Inherits="CSI.Menu.ListaEventos" %>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <link href="../Estilos/Tabla/css/lib/datatable/dataTables.bootstrap.min.css" rel="stylesheet" />
     <div class="breadcrumb-holder container-fluid">

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Menu/Home.Master" AutoEventWireup="true" CodeBehind="ListaBicicletas.aspx.cs" Inherits="CSI.Menu.ListaBicicletas" %>
+﻿<%@ Page Title="" Language="C#" EnableEventValidation="false" MasterPageFile="~/Menu/Home.Master" AutoEventWireup="true" CodeBehind="ListaBicicletas.aspx.cs" Inherits="CSI.Menu.ListaBicicletas" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <link href="../Estilos/Tabla/css/lib/datatable/dataTables.bootstrap.min.css" rel="stylesheet" />
@@ -24,8 +24,8 @@
                                         <th class="th-lg"><a>Nombre</a></th>
                                         <th class="th-lg"><a>Estado</a></th>
                                         <th class="th-lg"><a>Tipo</a></th>
+                                        <th class="th-lg"><a>Valor/Dia</a></th>
                                         <th class="th-lg"><a>Empresa</a></th>
-                                        <th class="th-lg"><a>Tipo</a></th>
                                         <th class="th-lg"><a>Alquilar</a></th>
 
                                     </tr>
@@ -40,8 +40,8 @@
                                                 <td><%#Eval("nombre_bicicleta") %></td>
                                                 <td><%#Eval("estado_bicicleta") %></td>
                                                 <td><%#Eval("nombre_tipo_bicicleta") %></td>
+                                                <td><%#Eval("valor_bicicleta") %></td>
                                                 <td><%#Eval("nombre_empresa") %></td>
-                                                <td><%#Eval("nombre_tipo_bicicleta") %></td>
 
                                                 <td>
                                                     <asp:LinkButton runat="server" OnCommand="Unnamed_Command" CssClass="" CommandArgument='<%#Eval("id_bicicleta") %>' CommandName="registrar">

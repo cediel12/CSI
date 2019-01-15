@@ -636,6 +636,7 @@
     <Content Include="Estilos\Tabla\js\widgets.js" />
     <Content Include="Home\Login.aspx" />
     <Content Include="Home\Signup.aspx" />
+    <Content Include="Menu\Alquilar.aspx" />
     <Content Include="Menu\CrearBicicleta.aspx" />
     <Content Include="Menu\CrearEvento.aspx" />
     <Content Include="Menu\GestionarUsuario.aspx" />
@@ -678,6 +679,13 @@
     </Compile>
     <Compile Include="Home\Signup.aspx.designer.cs">
       <DependentUpon>Signup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Menu\Alquilar.aspx.cs">
+      <DependentUpon>Alquilar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Menu\Alquilar.aspx.designer.cs">
+      <DependentUpon>Alquilar.aspx</DependentUpon>
     </Compile>
     <Compile Include="Menu\CrearBicicleta.aspx.cs">
       <DependentUpon>CrearBicicleta.aspx</DependentUpon>

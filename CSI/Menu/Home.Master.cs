@@ -32,9 +32,13 @@ namespace CSI.Menu
 
         }
 
-        protected void salir(object sender, EventArgs e)
+        public void salir(object sender, EventArgs e)
         {
-
+            Session["Estado"] = "1";
+            Session["IDUSER"] = "1";
+            Session["Nombre"] = "1";
+            Session["rol"] = "1";
+            Response.Redirect("../Home/Login.aspx");
         }
     }
 }

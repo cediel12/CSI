@@ -36,7 +36,7 @@ namespace CSI.Menu
         {
             if (e.CommandName.Equals("registrar"))
             {
-
+                Response.Redirect("../Menu/Alquilar.aspx");
             }
         }
     }

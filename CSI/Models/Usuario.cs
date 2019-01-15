@@ -45,13 +45,13 @@ namespace CSI.Models
         public DataTable ConsultarBicicletas()
         {
 
-            string sql = "SELECT id_bicicleta,nombre_bicicleta, descripcion_bicicleta, estado_bicicleta,nombre_tipo_bicicleta,nombre_empresa from cilcicaq.bicicleta inner join cilcicaq.empresa on id_empresa=empresa_id_empresa inner join cilcicaq.tipo_bicicleta on id_tipo_bicicleta=tipo_bicicleta_id_bicicleta;";
+            string sql = "SELECT id_bicicleta,nombre_bicicleta,valor_bicicleta, descripcion_bicicleta, estado_bicicleta,nombre_tipo_bicicleta,nombre_empresa from cilcicaq.bicicleta inner join cilcicaq.empresa on id_empresa=empresa_id_empresa inner join cilcicaq.tipo_bicicleta on id_tipo_bicicleta=tipo_bicicleta_id_bicicleta;";
             return co.EjecutarConsulta(sql, CommandType.Text);
         }
         public bool crear_bicicleta(string nombrebicicleta, int idempresa, int idtipobicicleta, int valor)
         {
             string[] sql = new string[1];
-            sql[0] = "CALL `cilcicaq`.`crear_bicicleta`('" + nombrebicicleta + "','" + idempresa + "'," + idtipobicicleta + valor +")";
+            sql[0] = "CALL `cilcicaq`.`crear_bicicleta`('" + nombrebicicleta + "'," + idempresa + "," + idtipobicicleta +"," + valor +")";
             return co.RealizarTransaccion(sql);
         }
         public DataTable TipoBicicletas()
