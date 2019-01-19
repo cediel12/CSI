@@ -21,8 +21,14 @@ namespace CSI.Menu
                 }
                 if (!IsPostBack)
                 {
-                    lista.DataSource = u.ConsultarBicicletas();
-                    lista.DataBind();
+                    if (Session["rol"].ToString() == "Empresa")
+                    {
+                        lista.DataSource = u.ConsultarBicicletasempresa(Convert.ToInt32(Session["IDEMPRESA"].ToString()));
+                        lista.DataBind();
+                    } else {
+                        lista.DataSource = u.ConsultarBicicletas();
+                        lista.DataBind();
+                    }
                 }
             }
             catch
@@ -37,6 +43,14 @@ namespace CSI.Menu
             if (e.CommandName.Equals("registrar"))
             {
                 Response.Redirect("../Menu/Alquilar.aspx");
+            }
+            if (e.CommandName.Equals("eliminar"))
+            {
+                
+            }
+            if (e.CommandName.Equals("modificar"))
+            {
+                
             }
         }
     }

@@ -21,9 +21,11 @@
                                 <thead>
                                     <tr>
                                         <th class="th-lg"><a>Nombre</a></th>
-                                        <th class="th-lg"><a>Estado</a></th>
                                         <th class="th-lg"><a>Tipo</a></th>
+                                        <th class="th-lg"><a>Valor</a></th>
                                         <th class="th-lg"><a>Empresa</a></th>
+                                        <th class="th-lg"><a>Fecha Inicio</a></th>
+                                        <th class="th-lg"><a>Fecha Fin</a></th>
                                         <th class="th-lg"><a>Cancelar Alquiler</a></th>
 
                                     </tr>
@@ -36,12 +38,14 @@
                                         <ItemTemplate>
                                             <tr>
                                                 <td><%#Eval("nombre_bicicleta") %></td>
-                                                <td><%#Eval("estado_bicicleta") %></td>
                                                 <td><%#Eval("nombre_tipo_bicicleta") %></td>
+                                                <td><%#Eval("valor_bicicleta") %></td>
                                                 <td><%#Eval("nombre_empresa") %></td>
+                                                <td><%#Eval("fechainicio") %></td>
+                                                <td><%#Eval("fechafin") %></td>
 
                                                 <td>
-                                                    <asp:LinkButton runat="server" OnCommand="cancelaralquiler" CssClass="" CommandArgument='<%#Eval("id_bicicleta") %>' CommandName="cancelar">
+                                                    <asp:LinkButton runat="server" OnCommand="cancelaralquiler" CssClass="" CommandArgument='<%#Eval("id_alquiler") %>' CommandName="cancelar">
                                             Cancelar Alquiler
                                                     </asp:LinkButton>
                                                 </td>

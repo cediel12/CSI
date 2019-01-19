@@ -21,7 +21,7 @@ namespace CSI.Menu
                 }
                 if (!IsPostBack)
                 {
-                    lista.DataSource = u.ConsultarBicicletas();
+                    lista.DataSource = u.listadealquileres(Convert.ToInt32(Session["IDCliente"].ToString()));
                     lista.DataBind();
                 }
             }

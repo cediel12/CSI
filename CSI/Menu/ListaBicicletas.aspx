@@ -1,5 +1,4 @@
 ﻿<%@ Page Title="" Language="C#" EnableEventValidation="false" MasterPageFile="~/Menu/Home.Master" AutoEventWireup="true" CodeBehind="ListaBicicletas.aspx.cs" Inherits="CSI.Menu.ListaBicicletas" %>
-
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <link href="../Estilos/Tabla/css/lib/datatable/dataTables.bootstrap.min.css" rel="stylesheet" />
     <div class="breadcrumb-holder container-fluid">
@@ -26,8 +25,22 @@
                                         <th class="th-lg"><a>Tipo</a></th>
                                         <th class="th-lg"><a>Valor/Dia</a></th>
                                         <th class="th-lg"><a>Empresa</a></th>
+                                        <%if (Session["rol"].ToString() == "Cliente")
+                                            {
+                                        %>
                                         <th class="th-lg"><a>Alquilar</a></th>
-
+                                        <%
+                                            }
+                                        %>
+                                        <%
+                                            if (Session["rol"].ToString() == "Empresa")
+                                            {
+                                        %>
+                                        <th class="th-lg"><a>Eliminar Bicicleta</a></th>
+                                        <th class="th-lg"><a>Modificar Bicicleta</a></th>
+                                        <%
+                                            }
+                                        %>
                                     </tr>
                                 </thead>
                                 <!--Table head-->
@@ -40,26 +53,43 @@
                                                 <td><%#Eval("nombre_bicicleta") %></td>
                                                 <td><%#Eval("estado_bicicleta") %></td>
                                                 <td><%#Eval("nombre_tipo_bicicleta") %></td>
-                                                <td><%#Eval("valor_bicicleta") %></td>
+                                                <td>$ <%#Eval("valor_bicicleta") %></td>
                                                 <td><%#Eval("nombre_empresa") %></td>
 
                                                 <td>
+                                                    <%if (Session["rol"].ToString() == "Cliente")
+                                                        {
+                                                    %>
                                                     <asp:LinkButton runat="server" OnCommand="Unnamed_Command" CssClass="" CommandArgument='<%#Eval("id_bicicleta") %>' CommandName="registrar">
                                             Alquilar
                                                     </asp:LinkButton>
+                                                    <%
+                                                        }
+                                                    %>
+                                                    <%
+                                                        if (Session["rol"].ToString() == "Empresa")
+                                                        {
+                                                    %>
+                                                    <asp:LinkButton runat="server" OnCommand="Unnamed_Command" CssClass="" CommandArgument='<%#Eval("id_bicicleta") %>' CommandName="eliminar">
+                                            Eliminar
+                                                    </asp:LinkButton>
                                                 </td>
+                                                <td>
+                                                    <asp:LinkButton runat="server" OnCommand="Unnamed_Command" CssClass="" CommandArgument='<%#Eval("id_bicicleta") %>' CommandName="modificar">
+                                            Modificar
+                                                    </asp:LinkButton>
+                                                </td>
+                                                <%
+                                                    }
+                                                %>
                                             </tr>
                                         </ItemTemplate>
                                     </asp:ListView>
-
-
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
-
-
             </div>
         </div>
         <!-- .animated -->
@@ -81,5 +111,4 @@
             $('#bootstrap-data-table-export').DataTable();
         });
     </script>
-
 </asp:Content>

@@ -22,6 +22,7 @@
                                     <tr>
                                         <th class="th-lg"><a>Nombre</a></th>
                                         <th class="th-lg"><a>Fecha</a></th>
+                                        <th class="th-lg"><a>Hora</a></th>
                                         <th class="th-lg"><a>Organizador</a></th>
                                         <th class="th-lg"><a>Participar</a></th>                                    
                                                                                
@@ -36,6 +37,7 @@
                                             <tr>
                                                 <td><%#Eval("nombre_evento") %></td>
                                                 <td><%#Eval("fecha_evento") %></td>
+                                                <td><%#Eval("hora") %></td>
                                                 <td><%#Eval("nombre_empresa") %></td>
 
                                                 <td>

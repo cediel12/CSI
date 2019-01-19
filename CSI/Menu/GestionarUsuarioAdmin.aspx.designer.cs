@@ -10,7 +10,7 @@
 namespace CSI.Menu {
     
     
-    public partial class GestionarUsuario {
+    public partial class GestionarUsuarioAdmin {
         
         /// <summary>
         /// Control nombre.
@@ -22,22 +22,13 @@ namespace CSI.Menu {
         protected global::System.Web.UI.WebControls.TextBox nombre;
         
         /// <summary>
-        /// Control apellido.
+        /// Control telefono.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox apellido;
-        
-        /// <summary>
-        /// Control edad.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox edad;
+        protected global::System.Web.UI.WebControls.TextBox telefono;
         
         /// <summary>
         /// Control Button1.

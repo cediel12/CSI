@@ -56,6 +56,7 @@ namespace CSI.Home
                             {
                                 dcliente = cliente.Rows[0];
                                 Session["Nombre"] = dcliente["nombre_cliente"].ToString() + " " + dcliente["apellido_cliente"].ToString();
+                                Session["IDCliente"] = dcliente["id_cliente"];
                             }
                         }
                         else if (rol == "2")

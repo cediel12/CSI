@@ -640,6 +640,8 @@
     <Content Include="Menu\CrearBicicleta.aspx" />
     <Content Include="Menu\CrearEvento.aspx" />
     <Content Include="Menu\GestionarUsuario.aspx" />
+    <Content Include="Menu\GestionarUsuarioAdmin.aspx" />
+    <Content Include="Menu\GestionarUsuarioEmpresa.aspx" />
     <Content Include="Menu\Home.aspx" />
     <Content Include="Menu\ListaAlquiler.aspx" />
     <Content Include="Menu\ListaBicicletas.aspx" />
@@ -707,6 +709,20 @@
     </Compile>
     <Compile Include="Menu\GestionarUsuario.aspx.designer.cs">
       <DependentUpon>GestionarUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Menu\GestionarUsuarioAdmin.aspx.cs">
+      <DependentUpon>GestionarUsuarioAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Menu\GestionarUsuarioAdmin.aspx.designer.cs">
+      <DependentUpon>GestionarUsuarioAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Menu\GestionarUsuarioEmpresa.aspx.cs">
+      <DependentUpon>GestionarUsuarioEmpresa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Menu\GestionarUsuarioEmpresa.aspx.designer.cs">
+      <DependentUpon>GestionarUsuarioEmpresa.aspx</DependentUpon>
     </Compile>
     <Compile Include="Menu\Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>

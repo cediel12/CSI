@@ -1,6 +1,7 @@
 ﻿using CSI.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -11,6 +12,7 @@ namespace CSI.Menu
     public partial class ListaEventos : System.Web.UI.Page
     {
         Usuario u = new Usuario();
+        DataTable dt;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -34,7 +36,19 @@ namespace CSI.Menu
         {
             if (e.CommandName.Equals("registrar"))
             {
-
+                int id = Convert.ToInt32(e.CommandArgument.ToString());
+                int iduser = Convert.ToInt32(Session["IDUSER"].ToString());
+                dt = u.consultarinscripcionevento(iduser, id);
+                if (dt.Rows.Count>0)
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Ya se encuentra inscrito en este evento');", true);
+                }else
+                {
+                    if (u.inscrbirevento(id, iduser) ==true)
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Su registro fue exitoso');", true);
+                    }
+                }
             }
         }
     }

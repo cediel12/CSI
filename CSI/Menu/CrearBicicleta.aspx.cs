@@ -53,16 +53,7 @@ namespace CSI.Menu
             else
             {
                 ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Bicicleta no se creada correctamente');", true);
-            }
-
-            //if (u.registrarusuarioadmin(usuario.Text, contra.Text, nombre.Text, apellido.Text, correo.Text, Int32.Parse(rol.Text), Convert.ToInt32(cedula.Text)) == true)
-            //{
-            //    ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('El usuario " + nombre.Text + " se creo correctamente');", true);
-            //}
-            //else
-            //{
-
-            //}
+            }            
         }
     }
 }
