@@ -48,25 +48,22 @@
                     <!-- Form Panel    -->
                     <div class="col-lg-6 bg-white">
                         <div class="form d-flex align-items-center">
-                            <form method="post" class="form-validate" runat="server">
-                                <div class="content">
+                            <div class="content">
+                                <form method="post" class="form-validate" runat="server">
                                     <div class="form-group">
-                                        <label for="username" class="label-material">Usuario</label>
-                                        <asp:TextBox ID="username" class="form-control requered" autocomplete="off" runat="server" Width="252px" MaxLength="20"></asp:TextBox>
+                                        <input id="login-username" type="text" name="loginUsername" required data-msg="Por favor Ingresar un usuario" class="input-material">
+                                        <label for="login-username" class="label-material">Usuario</label>
                                     </div>
                                     <div class="form-group">
-                                        <label for="password" class="label-material">Contraseña</label>
-                                        <asp:TextBox ID="password" class="form-control requered" TextMode="Password" runat="server" MaxLength="20" Width="252px"></asp:TextBox>
+                                        <input id="login-password" type="password" name="loginPassword" required data-msg="Por favor ingresar una contraseña" class="input-material">
+                                        <label for="login-password" class="label-material">Contraseña</label>
                                     </div>
-                                    <asp:Button ID="Button1" runat="server" EnableTheming="True" class="btn btn-primary" Text="Iniciar Sesion" OnClick="IniciarSesion" />
+                                    <asp:Button ID="Button2" runat="server" EnableTheming="True" class="btn btn-primary" Text="Iniciar Sesion" OnClick="IniciarSesion" />
                                     <!-- This should be submit button but I replaced it with <a> for demo purposes-->
-                                    <a href="#" class="forgot-pass"></a>
-                                    <br>
-                                    <small>No tiene una cuenta? 
-                                    <asp:Button ID="olvidoclave" runat="server" EnableTheming="True" class="btn btn-link" Text="Registrar" OnClick="registrar" />
-                                    </small>
-                                </div>
-                            </form>
+                                </form>
+                                <a href="#" class="forgot-pass">Restablecer Contraseña?</a><br>
+                                <small>No tiene una cuenta? </small><a href="Signup.aspx" class="signup">Registrar</a>
+                            </div>
                         </div>
                     </div>
                 </div>

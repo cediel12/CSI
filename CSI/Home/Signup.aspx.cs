@@ -16,7 +16,7 @@ namespace CSI.Home
 
         protected void iniciarsesion(object sender, EventArgs e)
         {
-            Response.Redirect("Login.aspx");
+            
         }
     }
 }

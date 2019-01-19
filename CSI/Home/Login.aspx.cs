@@ -17,25 +17,27 @@ namespace CSI.Home
         DataRow dr, dadmin, dempresa, dcliente;
         protected void Page_Load(object sender, EventArgs e)
         {
-            username.Attributes.Add("autocomplete", "off");
-            password.Attributes.Add("autocomplete", "off");
+            //username.Attributes.Add("autocomplete", "off");
+            //password.Attributes.Add("autocomplete", "off");
 
         }
 
         protected void IniciarSesion(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(username.Text) && !string.IsNullOrWhiteSpace(password.Text))
+            string username = String.Format("{0}", Request.Form["loginUsername"]);
+            string password = String.Format("{0}", Request.Form["loginPassword"]);
+            if (!string.IsNullOrWhiteSpace(username) && !string.IsNullOrWhiteSpace(password))
             {
-                dt = u.ValidarPersona(username.Text, password.Text);
+                dt = u.ValidarPersona(username, password);
                 if (dt.Rows.Count > 0)
                 {
                     dr = dt.Rows[0];
                     Session["Estado"] = "OK";
                     Session["IDUSER"] = dr["id_correo"].ToString();
-                    string iduser= dr["id_correo"].ToString();
+                    string iduser = dr["id_correo"].ToString();
                     //Session["correo"] = dr["correo"].ToString();
                     rol = dr["rol_usuario_id_rol_usuario"].ToString();
-                    Session["roldefinido"]= dr["rol_usuario_id_rol_usuario"].ToString();
+                    Session["roldefinido"] = dr["rol_usuario_id_rol_usuario"].ToString();
                     if (!string.IsNullOrWhiteSpace(rol))
                     {
                         if (rol == "3")

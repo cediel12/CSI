@@ -47,16 +47,24 @@
                             <div class="content">
                                 <form class="form-validate" runat="server">
                                     <div class="form-group">
-                                        <input id="register-username" type="text" name="registerUsername" required data-msg="Please enter your username" class="input-material">
-                                        <label for="register-username" class="label-material">User Name</label>
+                                        <input id="register-username" type="text" name="usuario" required data-msg="Please enter your username" class="input-material">
+                                        <label for="register-username" class="label-material">Usuario</label>
                                     </div>
                                     <div class="form-group">
-                                        <input id="register-email" type="email" name="registerEmail" required data-msg="Please enter a valid email address" class="input-material">
-                                        <label for="register-email" class="label-material">Email Address      </label>
+                                        <input id="register-contraseña" type="password" name="contraseña" required data-msg="Please enter a valid email address" class="input-material">
+                                        <label for="register-contraseña" class="label-material">Contraseña</label>
                                     </div>
                                     <div class="form-group">
-                                        <input id="register-password" type="password" name="registerPassword" required data-msg="Please enter your password" class="input-material">
-                                        <label for="register-password" class="label-material">password        </label>
+                                        <input id="register-nombre" type="text" name="nombre" required data-msg="Please enter your password" class="input-material">
+                                        <label for="register-nombre" class="label-material">Nombre       </label>
+                                    </div>
+                                    <div class="form-group">
+                                        <input id="register-apellido" type="text" name="nombre" required data-msg="Please enter your password" class="input-material">
+                                        <label for="register-apellido" class="label-material">Apellido       </label>
+                                    </div>
+                                    <div class="form-group">
+                                        <input id="register-edad" type="text" name="nombre" required data-msg="Please enter your password" class="input-material">
+                                        <label for="register-edad" class="label-material">Edad       </label>
                                     </div>
                                     <div class="form-group terms-conditions">
                                         <input id="register-agree" name="registerAgree" type="checkbox" required value="1" data-msg="Your agreement is required" class="checkbox-template">
