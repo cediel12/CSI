@@ -552,6 +552,7 @@
     <Content Include="Estilos\Tabla\css\cs-skin-elastic.css" />
     <Content Include="Estilos\Tabla\css\flag-icon.min.css" />
     <Content Include="Estilos\Tabla\css\font-awesome.min.css" />
+    <Content Include="Estilos\Tabla\css\lib\animatesweet.css" />
     <Content Include="Estilos\Tabla\css\lib\chosen\chosen-sprite%402x.png" />
     <Content Include="Estilos\Tabla\css\lib\chosen\chosen-sprite.png" />
     <Content Include="Estilos\Tabla\css\lib\chosen\chosen.css" />
@@ -629,6 +630,7 @@
     <Content Include="Estilos\Tabla\js\plugins.js" />
     <Content Include="Estilos\Tabla\js\popper.min.js" />
     <Content Include="Estilos\Tabla\js\selectFx.js" />
+    <Content Include="Estilos\Tabla\js\sweetalert2.js" />
     <Content Include="Estilos\Tabla\js\vendor\index.html" />
     <Content Include="Estilos\Tabla\js\vendor\jquery-1.11.3.min.js" />
     <Content Include="Estilos\Tabla\js\vendor\jquery-2.1.4.min.js" />

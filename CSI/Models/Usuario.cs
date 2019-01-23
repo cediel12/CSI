@@ -106,5 +106,37 @@ namespace CSI.Models
             string sql = "select nombre_bicicleta, valor_bicicleta, nombre_empresa,date_format( fechafin, ' %d/%c/%Y') as  fechafin,date_format( fechainicio, ' %d/%c/%Y') as  fechainicio, id_alquiler,nombre_tipo_bicicleta from cilcicaq.alquiler inner join cilcicaq.bicicleta on bicicleta_id_bicicleta=id_bicicleta inner join cilcicaq.empresa on id_empresa=empresa_id_empresa inner join cilcicaq.tipo_bicicleta on id_tipo_bicicleta=tipo_bicicleta_id_bicicleta where fk_id_cliente=" + iduser + ";";
             return co.EjecutarConsulta(sql, CommandType.Text);
         }
+        public DataTable cargarpais()
+        {
+            string sql = "SELECT * FROM cilcicaq.pais;";
+            return co.EjecutarConsulta(sql, CommandType.Text);
+        }
+        public DataTable cargardepartamentos(int a)
+        {
+            string sql = "SELECT * FROM cilcicaq.departamento where fk_id_pais="+a+";";
+            return co.EjecutarConsulta(sql, CommandType.Text);
+        }
+        public DataTable cargarciudad(int a)
+        {
+            string sql = "SELECT * FROM cilcicaq.ciudad where fk_id_departamento="+ a+";";
+            return co.EjecutarConsulta(sql, CommandType.Text);
+        }
+        public DataTable consultarusuarioregistro(string a)
+        {
+            string sql = "SELECT * FROM cilcicaq.usuario where nombre_usuario='" + a + "';";
+            return co.EjecutarConsulta(sql, CommandType.Text);
+        }
+        public bool registrarusuario(string nombre, string apellido, string edad, string usuario,string contraseña)
+        {
+            string[] sql = new string[1];
+            sql[0] = "call cilcicaq.registrar('"+usuario+"','"+contraseña+ "','" + nombre+ "','" + apellido + "','" + edad + "');";
+            return co.RealizarTransaccion(sql);
+        }
+        public bool alquilarbicicleta(string fechainicio, string fechafin, int idcliente, int idbicicleta)
+        {
+            string[] sql = new string[1];
+            sql[0] = "call cilcicaq.alquilarbicicleta('" + fechainicio + "','" + fechafin+ "'," + idcliente + "," + idbicicleta + ");";
+            return co.RealizarTransaccion(sql);
+        }
     }
 }

@@ -42,6 +42,7 @@ namespace CSI.Menu
         {
             if (e.CommandName.Equals("registrar"))
             {
+                Session["AlquilerBicicleta"] = Convert.ToInt32(e.CommandArgument.ToString());
                 Response.Redirect("../Menu/Alquilar.aspx");
             }
             if (e.CommandName.Equals("eliminar"))

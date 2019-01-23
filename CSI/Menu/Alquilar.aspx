@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Agregar Imagen Usuario</title>
+    <title>Proceso de Alquiler</title>
     <!-- Bootstrap CSS-->
     <link href="../../Estilos/Men/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <!-- Font Awesome CSS-->
@@ -47,13 +47,20 @@
 <body>
     <form id="form1" runat="server">
         <div class="container-fluid">
-                <div class="panel-heading">
-                 <asp:Label ID="label1" Text="" runat="server" />
-                </div>
-                <div>
-                   <asp:FileUpload ID="fileupload1" runat="server" class="btn btn-primary btn-responsive"/>
-                   <asp:Button ID="button1" Text="cargar_archivo" runat="server" class="btn btn-default btn-responsive"/>
-                </div>
+            <div class="panel-heading">
+                <asp:Label ID="label1" Text="" runat="server" />
+            </div>
+            <div class="form-group">
+                <label for="number">Fecha Inicio</label>
+                <asp:TextBox ID="fechainicio" class="form-control" runat="server" Height="46" TextMode="Date"></asp:TextBox>
+            </div>
+            <div class="form-group">
+                <label for="number">Fecha Fin</label>
+                <asp:TextBox ID="fechafin" class="form-control"  runat="server" Height="46" TextMode="Date" ></asp:TextBox>
+            </div>
+            <div>
+                <asp:Button ID="button1" Text="Realizar Alquiler" runat="server" class="btn btn-default btn-responsive" OnClick="button1_Click" />
+            </div>
         </div>
     </form>
 </body>

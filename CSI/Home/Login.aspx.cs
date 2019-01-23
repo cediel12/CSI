@@ -17,9 +17,7 @@ namespace CSI.Home
         DataRow dr, dadmin, dempresa, dcliente;
         protected void Page_Load(object sender, EventArgs e)
         {
-            //username.Attributes.Add("autocomplete", "off");
-            //password.Attributes.Add("autocomplete", "off");
-
+            
         }
 
         protected void IniciarSesion(object sender, EventArgs e)
@@ -75,16 +73,20 @@ namespace CSI.Home
                     }
                     Response.Redirect("../Menu/Home.aspx");
                 }
+                else
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "randontext", "alertme()", true);
+                }
             }
             else
             {
-                ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Datos ingresados no validos');", true);
+                //ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Datos ingresados no validos');", true);
             }
         }
 
         protected void registrar(object sender, EventArgs e)
         {
-            Response.Redirect("Signup.aspx");
+            Response.Redirect("Signup.aspx");   
         }
     }
 }

@@ -24,10 +24,24 @@
     <link href="../Estilos/Men/css/custom.css" rel="stylesheet" />
     <!-- Favicon-->
     <link rel="shortcut icon" href="../Estilos/Men/img/icono.ico" />
+    <script src="../Estilos/Tabla/js/sweetalert2.js" type="text/javascript"></script>
+    <link href="../Estilos/Tabla/css/lib/animatesweet.css" rel="stylesheet" />
     <!-- Tweaks for older IEs-->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+    <script>
+        function alertme(){
+            Swal.fire({
+                type: 'error',
+                title: 'Usuario Incorrecto',
+                animation: false,
+                customClass: 'animated tada',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        }
+    </script>
 </head>
 <body>
     <div class="page login-page">
@@ -51,14 +65,14 @@
                             <div class="content">
                                 <form method="post" class="form-validate" runat="server">
                                     <div class="form-group">
-                                        <input id="login-username" type="text" name="loginUsername" required data-msg="Por favor Ingresar un usuario" class="input-material">
+                                        <input id="login-username" type="text" name="loginUsername" required data-msg="Por favor Ingresar un usuario" autocomplete="off" class="input-material">
                                         <label for="login-username" class="label-material">Usuario</label>
                                     </div>
                                     <div class="form-group">
                                         <input id="login-password" type="password" name="loginPassword" required data-msg="Por favor ingresar una contraseña" class="input-material">
                                         <label for="login-password" class="label-material">Contraseña</label>
                                     </div>
-                                    <asp:Button ID="Button2" runat="server" EnableTheming="True" class="btn btn-primary" Text="Iniciar Sesion" OnClick="IniciarSesion" />
+                                    <asp:Button OnClientClick="postback false;" ID="Button2" runat="server" EnableTheming="True" class="btn btn-primary"  Text="Iniciar Sesion" OnClick="IniciarSesion" />
                                     <!-- This should be submit button but I replaced it with <a> for demo purposes-->
                                 </form>
                                 <a href="#" class="forgot-pass">Restablecer Contraseña?</a><br>

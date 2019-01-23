@@ -24,6 +24,20 @@
     <link href="../Estilos/Men/css/custom.css" rel="stylesheet" />
     <!-- Favicon-->
     <link rel="shortcut icon" href="../Estilos/Men/img/icono.ico" />
+    <script src="../Estilos/Tabla/js/sweetalert2.js" type="text/javascript"></script>
+    <link href="../Estilos/Tabla/css/lib/animatesweet.css" rel="stylesheet" />
+    <script>
+        function alertme(){
+            Swal.fire({
+                type: 'error',
+                title: 'Usuario ya se encuentra registrado',
+                animation: false,
+                customClass: 'animated tada',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        }
+    </script>
 </head>
 <body>
     <div class="page login-page">
@@ -47,33 +61,29 @@
                             <div class="content">
                                 <form class="form-validate" runat="server">
                                     <div class="form-group">
-                                        <input id="register-username" type="text" name="usuario" required data-msg="Please enter your username" class="input-material">
+                                        <input id="register-username" type="text" name="usuario" required data-msg="Ingrese un usuario valido" autocomplete="off" class="input-material">
                                         <label for="register-username" class="label-material">Usuario</label>
                                     </div>
                                     <div class="form-group">
-                                        <input id="register-contraseña" type="password" name="contraseña" required data-msg="Please enter a valid email address" class="input-material">
+                                        <input id="register-contraseña" type="password" name="contraseña" required data-msg="Ingrese una contraseña valida" class="input-material">
                                         <label for="register-contraseña" class="label-material">Contraseña</label>
                                     </div>
                                     <div class="form-group">
-                                        <input id="register-nombre" type="text" name="nombre" required data-msg="Please enter your password" class="input-material">
-                                        <label for="register-nombre" class="label-material">Nombre       </label>
+                                        <input id="register-nombre" type="text" name="nombre" required data-msg="Ingrese un nombre valido" autocomplete="off" class="input-material">
+                                        <label for="register-nombre" class="label-material">Nombre</label>
                                     </div>
                                     <div class="form-group">
-                                        <input id="register-apellido" type="text" name="nombre" required data-msg="Please enter your password" class="input-material">
-                                        <label for="register-apellido" class="label-material">Apellido       </label>
+                                        <input id="register-apellido" type="text" name="apellido" required data-msg="Ingrese un apellido valido" autocomplete="off" class="input-material">
+                                        <label for="register-apellido" class="label-material">Apellido</label>
                                     </div>
                                     <div class="form-group">
-                                        <input id="register-edad" type="text" name="nombre" required data-msg="Please enter your password" class="input-material">
-                                        <label for="register-edad" class="label-material">Edad       </label>
-                                    </div>
-                                    <div class="form-group terms-conditions">
-                                        <input id="register-agree" name="registerAgree" type="checkbox" required value="1" data-msg="Your agreement is required" class="checkbox-template">
-                                        <label for="register-agree">Agree the terms and policy</label>
+                                        <input id="register-edad" type="text" name="edad" required data-msg="Ingrese una edad" autocomplete="off" class="input-material">
+                                        <label for="register-edad" class="label-material">Edad</label>
                                     </div>
                                     <div class="form-group">
-                                        <button id="regidter" type="submit" name="registerSubmit" class="btn btn-primary">Register</button>
+                                        <button runat="server" id="Button1" onserverclick="registrar" class="btn btn-primary" title="Salir">Registrar</button>
                                     </div>
-                                </form>
+                                </form><small>Ya tienes una cuenta? </small><a href="Login.aspx" class="signup">Inciar Sesión</a>
                             </div>
                         </div>
                     </div>
