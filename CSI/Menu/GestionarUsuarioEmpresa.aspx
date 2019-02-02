@@ -3,12 +3,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
     <link href="../../Estilos/styles.css" rel="stylesheet" />
-    <div class="breadcrumb-holder container-fluid">
-        <ul class="breadcrumb">
-            <li class="breadcrumb-item"><a href="Home.aspx">Home</a></li>
-            <li class="breadcrumb-item active">Gestionar Usuario</li>
-        </ul>
-    </div>
+    
     <div class="container" id="advanced-search-form">
         <h2>Gestionar Usuario</h2>
         <from>

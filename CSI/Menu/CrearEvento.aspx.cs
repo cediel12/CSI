@@ -15,6 +15,8 @@ namespace CSI.Menu
         {
             try
             {
+                Session["direccion"] = "Crear Evento";
+                Session["entrada"] = "1";
                 if (Session["Estado"].ToString() != "OK")
                 {
                     Response.Redirect("../Home/Login.aspx");
@@ -28,13 +30,13 @@ namespace CSI.Menu
         protected void crear_evento(object sender, EventArgs e)
         {
             int idempresa = Convert.ToInt32(Session["IDEMPRESA"].ToString());
-            if (u.crear_evento(nombreevento.Text, fechafin.Text, hora.Text, idempresa))
+            if (u.crear_evento(nombreevento.Text, fechafin.Text, hora.Text, idempresa, lugar.Text))
             {
                 ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Evento creado correctamente');", true);
             }
             else
             {
-                ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Evento no se ha creado correctamente');", true);
+                ClientScript.RegisterStartupScript(this.GetType(), "randontext", "errorcrearevento()", true);
             }
         }
     }

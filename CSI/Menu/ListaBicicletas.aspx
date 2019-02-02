@@ -1,13 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" EnableEventValidation="false" MasterPageFile="~/Menu/Home.Master" AutoEventWireup="true" CodeBehind="ListaBicicletas.aspx.cs" Inherits="CSI.Menu.ListaBicicletas" %>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <link href="../Estilos/Tabla/css/lib/datatable/dataTables.bootstrap.min.css" rel="stylesheet" />
-    <div class="breadcrumb-holder container-fluid">
-        <ul class="breadcrumb">
-            <li class="breadcrumb-item"><a href="Home.aspx">Home</a></li>
-            <li class="breadcrumb-item active">Lista de Bicicletas            </li>
-        </ul>
-    </div>
-    <div class="content mt-3">
+    
+    <%--<div class="content mt-3">
         <div class="animated fadeIn">
             <div class="row">
 
@@ -93,6 +89,64 @@
             </div>
         </div>
         <!-- .animated -->
+    </div>--%>
+    <div class="page">
+        <div class="page-content d-flex align-items-stretch">
+            <div class="content-inner">
+                <section class="client no-padding-top">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <!-- Client Profile -->
+                            <%for (int a = 0; a < todo.Rows.Count; a++)
+                                {
+                                    drtodo = todo.Rows[a];
+                                    Session["nombrebici"] = drtodo["nombre_bicicleta"].ToString();
+                                    Session["talla"] = drtodo["talla"].ToString();
+                                    Session["valor_bicicleta"] = drtodo["valor_bicicleta"].ToString();
+                                    Session["nombre_tipo_bicicleta"] = drtodo["nombre_tipo_bicicleta"].ToString();
+                                    Session["imagen"] = "../../scr/" + drtodo["imagen"].ToString();
+                            %>
+                            <div class="col-lg-4">
+                                <div class="client card">
+                                    <div class="card-close">
+                                        <div class="dropdown">
+                                            <button type="button" id="closeCard2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
+                                            <div aria-labelledby="closeCard2" class="dropdown-menu dropdown-menu-right has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a></div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body text-center">
+                                        <div class="client-avatar">
+                                            <img src="<%=Session["imagen"].ToString() %>"..." class="img-fluid rounded-circle">
+                                            <div class="status bg-green"></div>
+                                        </div>
+                                        <div class="client-title">
+                                            <h3><%=Session["nombrebici"].ToString() %></h3>
+                                            <span>$ <%=Session["valor_bicicleta"].ToString() %> / Dia</span>
+                                            <button type="button" runat="server" id="Button1" class="btn btn-primary" title="Salir">Alquilar</button>
+                                        </div>
+                                        <div class="client-info">
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    <strong>Tipo</strong><br>
+                                                    <span><%=Session["nombre_tipo_bicicleta"].ToString() %></span>
+                                                </div>
+                                                <div class="col-4">
+                                                    <strong>Talla</strong><br>
+                                                    <span><%=Session["talla"].ToString() %></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                            <%
+                                } %>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
     </div>
     <!-- .content -->
     <script src="../Estilos/Tabla/js/lib/data-table/datatables.min.js"></script>

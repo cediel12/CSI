@@ -17,6 +17,8 @@ namespace CSI.Menu
         {
             try
             {
+                Session["direccion"] = "Lista de Eventos";
+                Session["entrada"] = "1";
                 if (Session["Estado"].ToString() != "OK")
                 {
                     Response.Redirect("../Home/Login.aspx");
@@ -41,8 +43,9 @@ namespace CSI.Menu
                 dt = u.consultarinscripcionevento(iduser, id);
                 if (dt.Rows.Count>0)
                 {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Ya se encuentra inscrito en este evento');", true);
-                }else
+                    ClientScript.RegisterStartupScript(this.GetType(), "randontext", "errorinscribir()", true);
+                }
+                else
                 {
                     if (u.inscrbirevento(id, iduser) ==true)
                     {

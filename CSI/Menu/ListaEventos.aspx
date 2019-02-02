@@ -1,12 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" EnableEventValidation="false" MasterPageFile="~/Menu/Home.Master" AutoEventWireup="true" CodeBehind="ListaEventos.aspx.cs" Inherits="CSI.Menu.ListaEventos" %>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <link href="../Estilos/Tabla/css/lib/datatable/dataTables.bootstrap.min.css" rel="stylesheet" />
-    <div class="breadcrumb-holder container-fluid">
-        <ul class="breadcrumb">
-            <li class="breadcrumb-item"><a href="Home.aspx">Home</a></li>
-            <li class="breadcrumb-item active">Lista de Eventos            </li>
-        </ul>
-    </div>
+    
     <div class="content mt-3">
         <div class="animated fadeIn">
             <div class="row">
@@ -23,6 +18,7 @@
                                         <th class="th-lg"><a>Nombre</a></th>
                                         <th class="th-lg"><a>Fecha</a></th>
                                         <th class="th-lg"><a>Hora</a></th>
+                                        <th class="th-lg"><a>Lugar</a></th>
                                         <th class="th-lg"><a>Organizador</a></th>
                                         <th class="th-lg"><a>Participar</a></th>                                    
                                                                                
@@ -38,6 +34,7 @@
                                                 <td><%#Eval("nombre_evento") %></td>
                                                 <td><%#Eval("fecha_evento") %></td>
                                                 <td><%#Eval("hora") %></td>
+                                                <td><%#Eval("lugar") %></td>
                                                 <td><%#Eval("nombre_empresa") %></td>
 
                                                 <td>

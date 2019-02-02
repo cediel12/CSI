@@ -18,22 +18,28 @@ namespace CSI.Menu
         {
             try
             {
+                Session["direccion"] = "Crear Bicicleta";
+                Session["entrada"] = "1";
                 if (Session["Estado"].ToString() != "OK")
                 {
                     Response.Redirect("../Home/Login.aspx");
                 }
                 if (!IsPostBack)
                 {
-                    dtconsulta = u.TipoBicicletas();
-                    if (dtconsulta.Rows.Count > 0)
-                    {
-                        drconsulta = dtconsulta.Rows[0];
-                        for (int i = 0; i < dtconsulta.Rows.Count; i++)
-                        {
-                            drconsulta = dtconsulta.Rows[i];
-                            eventos.Items.Add(drconsulta["nombre_tipo_bicicleta"].ToString().ToUpper());
-                        }
-                    }
+                    eventos.DataSource = u.TipoBicicletas();
+                    eventos.DataTextField = "nombre_tipo_bicicleta";
+                    eventos.DataValueField = "id_tipo_bicicleta";
+                    eventos.DataBind();
+                    //dtconsulta = u.TipoBicicletas();
+                    //if (dtconsulta.Rows.Count > 0)
+                    //{
+                    //    drconsulta = dtconsulta.Rows[0];
+                    //    for (int i = 0; i < dtconsulta.Rows.Count; i++)
+                    //    {
+                    //        drconsulta = dtconsulta.Rows[i];
+                    //        eventos.Items.Add(drconsulta["nombre_tipo_bicicleta"].ToString().ToUpper());
+                    //    }
+                    //}
                 }
 
             }
@@ -44,16 +50,27 @@ namespace CSI.Menu
         }
         protected void crear_bicicleta(object sender, EventArgs e)
         {
-            int selection = 0;
-            selection = Convert.ToInt32(eventos.SelectedIndex);
-            if (u.crear_bicicleta(nombrebici.Text, Convert.ToInt32(Session["IDEMPRESA"].ToString()), selection, Convert.ToInt32(valor.Text)))
+            if (fileupload1.HasFile)
             {
-                ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Bicicleta creada correctamente');", true);
+                string filepth = "~/scr/" + fileupload1.FileName;
+                int selection = 0;
+                string imagen = fileupload1.FileName;
+                selection = Convert.ToInt32(eventos.SelectedValue);
+                int idempresa = Convert.ToInt32(Session["IDEMPRESA"].ToString());
+                fileupload1.SaveAs(MapPath(filepth));
+                if (u.crear_bicicleta(nombrebici.Text, idempresa, selection, Convert.ToInt32(valor.Text), talla.Text, imagen))
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "randontext", "creaciondebici()", true);
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Bicicleta no se creada correctamente');", true);
+                }
             }
             else
             {
-                ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Bicicleta no se creada correctamente');", true);
-            }            
+                ClientScript.RegisterStartupScript(this.GetType(), "randontext", "cargarimagen()", true);
+            }
         }
     }
 }

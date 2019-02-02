@@ -4,12 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
     <link href="../../Estilos/styles.css" rel="stylesheet" />
-    <div class="breadcrumb-holder container-fluid">
-        <ul class="breadcrumb">
-            <li class="breadcrumb-item"><a href="Home.aspx">Home</a></li>
-            <li class="breadcrumb-item active">Lista de Bicicletas            </li>
-        </ul>
-    </div>
+    
     <div class="container" id="advanced-search-form">
         <h2>Crear Nueva Bicicleta</h2>
         <from>
@@ -22,10 +17,18 @@
                 <asp:TextBox ID="valor" class="form-control" autocomplete="off" runat="server" placeholder="Valor"></asp:TextBox>
             </div>
             <div class="form-group">
+                <label for="number">Talla</label>
+                <asp:TextBox ID="talla" class="form-control" autocomplete="off" runat="server" placeholder="Tipo"></asp:TextBox>
+            </div>
+            <div class="form-group">
                 <label for="first-name">Tipo de Bicicleta</label>
             <asp:DropDownList ID="eventos" class="form-control" AppendDataBoundItems="true" DataTextField="media_name" DataValueField="media_id" runat="server">
             </asp:DropDownList>
         </div>
+            <div class="form-group">
+                <label for="number">Imagen</label>
+                <asp:FileUpload ID="fileupload1" runat="server" class="btn btn-primary btn-responsive" Width="400"/>
+            </div>
             <div class="clearfix"></div>
             <asp:Button ID="Button1" runat="server" EnableTheming="True" class="btn btn-info btn-lg btn-responsive" Text="Crear" OnClick="crear_bicicleta" />
                 </from>

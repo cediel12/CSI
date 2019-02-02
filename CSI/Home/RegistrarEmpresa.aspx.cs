@@ -9,7 +9,7 @@ using System.Web.UI.WebControls;
 
 namespace CSI.Home
 {
-    public partial class Signup : System.Web.UI.Page
+    public partial class RegistrarEmpresa : System.Web.UI.Page
     {
         Usuario u = new Usuario();
         public DataTable dtconsulta;
@@ -18,7 +18,6 @@ namespace CSI.Home
         {
 
         }
-
         protected void registrar(object sender, EventArgs e)
         {
             string usuario = String.Format("{0}", Request.Form["usuario"]);
@@ -39,9 +38,9 @@ namespace CSI.Home
                 }
                 else
                 {
-                    ClientScript.RegisterStartupScript(this.GetType(), "randontext", "problem()", true);
-                
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Ocurrio un error durante el registro');", true);
                 }
+                Response.Redirect("Login.aspx");
             }
         }
     }

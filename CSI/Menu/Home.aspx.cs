@@ -13,6 +13,8 @@ namespace CSI.Menu
         {
             try
             {
+                Session["direccion"] = "";
+                Session["entrada"] = "0";
                 if (Session["Estado"].ToString() != "OK")
                 {
                     Response.Redirect("../Home/Login.aspx");

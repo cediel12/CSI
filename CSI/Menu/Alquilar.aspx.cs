@@ -13,6 +13,8 @@ namespace CSI.Menu
         Usuario u = new Usuario();
         protected void Page_Load(object sender, EventArgs e)
         {
+            Session["direccion"] = "Alquiler";
+            Session["entrada"] = "1";
             if (Session["Estado"].ToString() != "OK")
             {
                 Response.Redirect("../Home/Login.aspx");
@@ -25,7 +27,7 @@ namespace CSI.Menu
 
         protected void button1_Click(object sender, EventArgs e)
         {
-            if (u.alquilarbicicleta(fechafin.Text,fechainicio.Text, Convert.ToInt32(Session["IDCliente"].ToString()), Convert.ToInt32(Session["AlquilerBicicleta"].ToString())))
+            if (u.alquilarbicicleta(fechafin.Text, fechainicio.Text, Convert.ToInt32(Session["IDCliente"].ToString()), Convert.ToInt32(Session["AlquilerBicicleta"].ToString())))
             {
                 ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Alquiler realizado');", true);
             }

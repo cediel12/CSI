@@ -81,6 +81,7 @@
     <Reference Include="MySQL.Data.EntityFrameworkCore, Version=6.10.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="MySQL.Data.EntityFrameworkCore.Design, Version=6.10.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="MySql.Web, Version=6.10.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="System.Activities" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -99,6 +100,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Estilos\avatar-2.jpg" />
     <Content Include="Estilos\Men\css\custom.css" />
     <Content Include="Estilos\Men\css\fontastic.css" />
     <Content Include="Estilos\Men\css\style.blue.css" />
@@ -637,6 +639,7 @@
     <Content Include="Estilos\Tabla\js\vendor\modernizr-2.8.3.min.js" />
     <Content Include="Estilos\Tabla\js\widgets.js" />
     <Content Include="Home\Login.aspx" />
+    <Content Include="Home\RegistrarEmpresa.aspx" />
     <Content Include="Home\Signup.aspx" />
     <Content Include="Menu\Alquilar.aspx" />
     <Content Include="Menu\CrearBicicleta.aspx" />
@@ -676,6 +679,13 @@
     </Compile>
     <Compile Include="Home\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Home\RegistrarEmpresa.aspx.cs">
+      <DependentUpon>RegistrarEmpresa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home\RegistrarEmpresa.aspx.designer.cs">
+      <DependentUpon>RegistrarEmpresa.aspx</DependentUpon>
     </Compile>
     <Compile Include="Home\Signup.aspx.cs">
       <DependentUpon>Signup.aspx</DependentUpon>
@@ -776,6 +786,7 @@
   <ItemGroup>
     <Folder Include="Estilos\Men\vendor\font-awesome\less\" />
     <Folder Include="Estilos\Men\vendor\font-awesome\scss\" />
+    <Folder Include="scr\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

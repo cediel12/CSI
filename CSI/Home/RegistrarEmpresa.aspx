@@ -1,10 +1,10 @@
-﻿<%@ Page Language="C#" EnableEventValidation="false" AutoEventWireup="true" CodeBehind="Signup.aspx.cs" Inherits="CSI.Home.Signup" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="RegistrarEmpresa.aspx.cs" Inherits="CSI.Home.RegistrarEmpresa" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <meta charset="utf-8" />
+<meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>CiclyCaq</title>
     <meta name="description" content="" />
@@ -27,20 +27,10 @@
     <script src="../Estilos/Tabla/js/sweetalert2.js" type="text/javascript"></script>
     <link href="../Estilos/Tabla/css/lib/animatesweet.css" rel="stylesheet" />
     <script>
-        function alertme() {
+        function alertme(){
             Swal.fire({
                 type: 'error',
                 title: 'Usuario ya se encuentra registrado',
-                animation: false,
-                customClass: 'animated tada',
-                showConfirmButton: false,
-                timer: 1500
-            })
-        }
-        function problem() {
-            Swal.fire({
-                type: 'error',
-                title: 'Datos Invalidos',
                 animation: false,
                 customClass: 'animated tada',
                 showConfirmButton: false,
@@ -80,26 +70,28 @@
                                     </div>
                                     <div class="form-group">
                                         <input id="register-nombre" type="text" name="nombre" required data-msg="Ingrese un nombre valido" autocomplete="off" class="input-material">
-                                        <label for="register-nombre" class="label-material">Nombre</label>
+                                        <label for="register-nombre" class="label-material">Nombre Empresa</label>
                                     </div>
                                     <div class="form-group">
-                                        <input id="register-apellido" type="text" name="apellido" required data-msg="Ingrese un apellido valido" autocomplete="off" class="input-material">
-                                        <label for="register-apellido" class="label-material">Apellido</label>
+                                        <input id="register-direccion" type="text" name="direccion" required data-msg="Ingrese un apellido valido" autocomplete="off" class="input-material">
+                                        <label for="register-direccion" class="label-material">Dirección</label>
                                     </div>
                                     <div class="form-group">
-                                        <input id="register-correo" type="email" name="correo" required data-msg="Ingrese un correo valido" autocomplete="off" class="input-material">
+                                        <input id="register-telefono" type="text" name="telefono" required data-msg="Ingrese una edad" autocomplete="off" class="input-material">
+                                        <label for="register-telefono" class="label-material">Telefono</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <input id="register-nit" type="text" name="nit" required data-msg="Ingrese una edad" autocomplete="off" class="input-material">
+                                        <label for="register-nit" class="label-material">Nit</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <input id="register-correo" type="email" name="correo" required data-msg="Ingrese una edad" autocomplete="off" class="input-material">
                                         <label for="register-correo" class="label-material">Correo</label>
                                     </div>
                                     <div class="form-group">
-                                        <input id="register-edad" type="text" name="edad" required data-msg="Ingrese una edad" autocomplete="off" class="input-material">
-                                        <label for="register-edad" class="label-material">Edad</label>
+                                        <button runat="server" id="Button1" onserverclick="registrar" class="btn btn-primary" title="Salir">Registrar</button>
                                     </div>
-                                    <div class="form-group">
-                                        <button type="button" runat="server" id="Button1" onserverclick="registrar" class="btn btn-primary" title="Salir">Registrar</button>
-                                    </div>
-                                </form>
-                                <small>Ya tienes una cuenta? </small><a href="Login.aspx" class="signup">Inciar Sesión</a>
-                                <small>¿Eres una Empresa? </small><a href="RegistrarEmpresa.aspx" class="signup">Registrala</a>
+                                </form><small>Ya tienes una cuenta? </small><a href="Login.aspx" class="signup">Inciar Sesión</a>
                             </div>
                         </div>
                     </div>

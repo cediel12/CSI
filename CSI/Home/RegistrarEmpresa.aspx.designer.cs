@@ -7,10 +7,10 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace CSI.Menu {
+namespace CSI.Home {
     
     
-    public partial class ListaBicicletas {
+    public partial class RegistrarEmpresa {
         
         /// <summary>
         /// Control Button1.

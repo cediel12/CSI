@@ -1,12 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" EnableEventValidation="false" MasterPageFile="~/Menu/Home.Master" AutoEventWireup="true" CodeBehind="ListaAlquiler.aspx.cs" Inherits="CSI.Menu.ListaAlquiler" %>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <link href="../Estilos/Tabla/css/lib/datatable/dataTables.bootstrap.min.css" rel="stylesheet" />
-    <div class="breadcrumb-holder container-fluid">
-        <ul class="breadcrumb">
-            <li class="breadcrumb-item"><a href="Home.aspx">Home</a></li>
-            <li class="breadcrumb-item active">Bicicletas Alquiladas</li>
-        </ul>
-    </div>
+    
     <div class="content mt-3">
         <div class="animated fadeIn">
             <div class="row">
