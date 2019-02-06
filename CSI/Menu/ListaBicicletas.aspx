@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <link href="../Estilos/Tabla/css/lib/datatable/dataTables.bootstrap.min.css" rel="stylesheet" />
-    
+
     <%--<div class="content mt-3">
         <div class="animated fadeIn">
             <div class="row">
@@ -105,24 +105,39 @@
                                     Session["valor_bicicleta"] = drtodo["valor_bicicleta"].ToString();
                                     Session["nombre_tipo_bicicleta"] = drtodo["nombre_tipo_bicicleta"].ToString();
                                     Session["imagen"] = "../../scr/" + drtodo["imagen"].ToString();
+                                    Session["id_bicicleta"] = drtodo["id_bicicleta"].ToString();
+                                    
                             %>
                             <div class="col-lg-4">
                                 <div class="client card">
                                     <div class="card-close">
                                         <div class="dropdown">
                                             <button type="button" id="closeCard2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
-                                            <div aria-labelledby="closeCard2" class="dropdown-menu dropdown-menu-right has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a></div>
+                                            <div aria-labelledby="closeCard2" class="dropdown-menu dropdown-menu-right has-shadow"><a href="#" class="dropdown-item remove"><i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a></div>
                                         </div>
                                     </div>
                                     <div class="card-body text-center">
                                         <div class="client-avatar">
-                                            <img src="<%=Session["imagen"].ToString() %>"..." class="img-fluid rounded-circle">
+                                            <img src="<%=Session["imagen"].ToString() %>" class="img-fluid rounded-circle">
                                             <div class="status bg-green"></div>
                                         </div>
                                         <div class="client-title">
                                             <h3><%=Session["nombrebici"].ToString() %></h3>
                                             <span>$ <%=Session["valor_bicicleta"].ToString() %> / Dia</span>
-                                            <button type="button" runat="server" id="Button1" class="btn btn-primary" title="Salir">Alquilar</button>
+                                            <% if (Session["rol"].ToString() == "Empresa")
+                                                {
+                                            %>
+                                            <%--<button type="button" runat="server" id="modificar" class="btn btn-primary" title="Modificar">Alquilar</button>--%>
+                                            <asp:Button ID="Button1" OnClientClick="postback false;" runat="server" EnableTheming="True" class="btn btn-info btn-lg btn-responsive" Text="Alquilar" OnClick="Button1_Click" />
+
+                                            <%}
+                                                else
+                                                {%>
+                                            <button type="button" runat="server" id="alquilar" class="btn btn-primary" onserverclick="Button1_Click" title="Alquilar">Alquilar</button>
+                                            <asp:Button ID="Button2" runat="server" EnableTheming="True" class="btn btn-info btn-lg btn-responsive" Text="Reservar" OnClick="Button1_Click" />
+
+                                            <%Button2.ID = Session["id_bicicleta"].ToString();
+                                                } %>
                                         </div>
                                         <div class="client-info">
                                             <div class="row">
@@ -136,7 +151,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                       
+
                                     </div>
                                 </div>
                             </div>

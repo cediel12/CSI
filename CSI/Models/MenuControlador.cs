@@ -102,24 +102,6 @@ namespace CSI.Models
             ul.Attributes.Add("class", "list-unstyled collapse");
             ul.Attributes.Add("id", "" + id);
 
-            //li.Attributes.Add("class", "nav - item");
-            //li.Attributes.Add("data-toggle", "tooltip");
-            //li.Attributes.Add("data-placement", "right");
-            //li.Attributes.Add("title", Nombre);
-
-
-            //a.Attributes.Add("href", "#" + id.ToString());
-            //a.Attributes.Add("class", "nav-link nav-link-collapse collapsed");
-            //a.Attributes.Add("data-toggle", "collapse");
-            //a.Attributes.Add("data-parent", "#exampleAccordion");
-            //a.InnerHtml = "<i class='fa fa-fw fa-wrench'></i>" + Nombre + "<span class='nav-link-text'></span>";
-
-
-            //ul.Attributes.Add("class", "sidenav-second-level collapse");
-            ////ul.Attributes.Add("style", "display: none;");
-            //ul.Attributes.Add("id", id.ToString());
-
-
             foreach (vista it in vistas)
             {
                 ul.Controls.Add(it.CrearVista());
@@ -155,10 +137,6 @@ namespace CSI.Models
             //HtmlGenericControl a = new HtmlGenericControl("a");
 
             li.InnerHtml = "<a href='" + Convert.ToString(url) + "'>" + nombre + "</a>";
-            //a.InnerHtml = "<i class='" + icono + "'></i>" + nombre;
-            //a.Attributes.Add("href", Convert.ToString(url));
-
-            //li.Controls.Add(a);
             return li;
         }
     }
