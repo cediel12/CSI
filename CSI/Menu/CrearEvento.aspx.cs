@@ -17,6 +17,7 @@ namespace CSI.Menu
             {
                 Session["direccion"] = "Crear Evento";
                 Session["entrada"] = "1";
+                EnsureChildControls();
                 if (Session["Estado"].ToString() != "OK")
                 {
                     Response.Redirect("../Home/Login.aspx");

@@ -1,9 +1,7 @@
 ﻿using CSI.Models;
 using System;
-using System.Collections.Generic;
+using System.Collections;
 using System.Data;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -12,25 +10,35 @@ namespace CSI.Menu
     public partial class ListaBicicletas : System.Web.UI.Page
     {
         Usuario u = new Usuario();
-        public DataTable dt, todo;
-        public DataRow dr, drtodo;
+        public DataTable dt, todo, consulcant;
+        public DataRow dr, drtodo, consucan;
+        int id, canti;
 
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void button4_Click(object sender, EventArgs e)
         {
-            string butonbici = Button2.ID;
             dt = u.maximodealquileres(Session["IDCliente"].ToString());
             dr = dt.Rows[0];
             int max = Convert.ToInt32(dr["reserva"].ToString());
-            if (max < 2)
+            if (max < 5)
             {
-                Session["AlquilerBicicleta"] = butonbici;
-                Response.Redirect("../Menu/Alquilar.aspx");
+
+                string tiempo = eventos.SelectedValue;
+                int asd = Convert.ToInt32(cantidadalqui.SelectedValue.ToString());
+                int cantidadfinal = Convert.ToInt32(Session["cantibicisdispo"].ToString()) - asd;
+                string fechainic = fechainicio.Text.ToString();
+                if (u.alquilarbicicleta(fechainic, tiempo, Convert.ToInt32(Session["IDCliente"].ToString()), id, cantidadfinal, asd))
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Alquiler realizado');", true);
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('No se realizo el alquiler');", true);
+                }
             }
             else
             {
                 ClientScript.RegisterStartupScript(this.GetType(), "randontext", "alertme()", true);
             }
-
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -47,18 +55,16 @@ namespace CSI.Menu
                 //{
                 if (Session["rol"].ToString() == "Empresa")
                 {
-                    //lista.DataSource = u.ConsultarBicicletasempresa(Convert.ToInt32(Session["IDEMPRESA"].ToString()));
-                    //lista.DataBind();
                     todo = u.ConsultarBicicletasempresa(Convert.ToInt32(Session["IDEMPRESA"].ToString()));
                 }
                 else
                 {
-                    //lista.DataSource = u.ConsultarBicicletas();
-                    //lista.DataBind();
                     todo = u.ConsultarBicicletas();
 
-                    //}
                 }
+                //}
+                rep.DataSource = todo;
+                rep.DataBind();
             }
             catch
             {
@@ -70,7 +76,7 @@ namespace CSI.Menu
 
         public void Unnamed_Command(object sender, CommandEventArgs e)
         {
-            if (e.CommandName.Equals("registrar"))
+            if (e.CommandName.Equals(""))
             {
                 dt = u.maximodealquileres(Session["IDCliente"].ToString());
                 dr = dt.Rows[0];
@@ -86,14 +92,50 @@ namespace CSI.Menu
                 }
 
             }
-            if (e.CommandName.Equals("eliminar"))
+            if (e.CommandName.Equals("registrar"))
             {
+                id = Convert.ToInt32(e.CommandArgument.ToString());
+                consulcant = u.consulcantidad(id);
+                consucan = consulcant.Rows[0];
+                canti = Convert.ToInt32(consucan["cantidad"]);
+                Session["cantibicisdispo"] = canti;
+                cantidadalqui.Items.Clear();
+                cantidadalqui.DataSource = CreateDataSource();
+                cantidadalqui.DataTextField = "Cantidad";
+                cantidadalqui.DataValueField = "Valor";
+                cantidadalqui.DataBind();
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openModal();", true);
 
             }
             if (e.CommandName.Equals("modificar"))
             {
 
             }
+        }
+        ICollection CreateDataSource()
+        {
+            DataTable dt = null;
+            dt = new DataTable();
+            dt.Columns.Add(new DataColumn("Valor", typeof(int)));
+            dt.Columns.Add(new DataColumn("Cantidad", typeof(int)));
+            DataView dv = null;
+            for (int a = 1; a <= canti; a++)
+            {
+                dt.Rows.Add(CreateRow(a, a, dt));
+                dv = new DataView(dt);
+            }
+            return dv;
+
+        }
+        DataRow CreateRow(int Text, int Value, DataTable dt)
+        {
+            DataRow dr = null;
+            dr = dt.NewRow();
+            dr[0] = Text;
+            dr[1] = Value;
+
+            return dr;
+
         }
     }
 }

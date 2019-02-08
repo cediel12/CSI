@@ -33,6 +33,17 @@
                 timer: 2000
             })
         }
+        function contranewmal() {
+            Swal.fire({
+                type: 'error',
+                title: 'Contraseña actual incorrecta.',
+                animation: false,
+                customClass: 'animated tada',
+                showConfirmButton: false,
+                timer: 2000
+            })
+        }
+
         function cargarimagen() {
             Swal.fire({
                 type: 'error',
@@ -50,7 +61,13 @@
                 'success'
                 )
         }
-
+        function cambiocontranew() {
+            Swal.fire(
+                'Correcto!',
+                'Contraseña actualizada correctamente!',
+                'success'
+                )
+        }
         function eliminaralquiler() {
             Swal.fire({
                 position: 'top-end',
@@ -74,6 +91,15 @@
                 position: 'top-end',
                 type: 'Confimado',
                 title: 'Error al registrarse. Ya se encuentra inscrito a este evento. ',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        }
+        function errorcrearbici() {
+            Swal.fire({
+                position: 'top-end',
+                type: 'Confimado',
+                title: 'Error al crear la bicicleta. Complete el formulario en su totalidad ',
                 showConfirmButton: false,
                 timer: 1500
             })

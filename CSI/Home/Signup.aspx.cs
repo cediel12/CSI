@@ -27,6 +27,7 @@ namespace CSI.Home
             string apellido = String.Format("{0}", Request.Form["apellido"]);
             string edad = String.Format("{0}", Request.Form["edad"]);
             dtconsulta = u.consultarusuarioregistro(usuario);
+            EnsureChildControls();
             if (dtconsulta.Rows.Count > 0)
             {
                 ClientScript.RegisterStartupScript(this.GetType(), "randontext", "alertme()", true);

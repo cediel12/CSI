@@ -40,18 +40,18 @@ namespace CSI.Menu
             {
                 int id = Convert.ToInt32(e.CommandArgument.ToString());
                 int iduser = Convert.ToInt32(Session["IDUSER"].ToString());
-                dt = u.consultarinscripcionevento(iduser, id);
-                if (dt.Rows.Count>0)
-                {
-                    ClientScript.RegisterStartupScript(this.GetType(), "randontext", "errorinscribir()", true);
-                }
-                else
-                {
-                    if (u.inscrbirevento(id, iduser) ==true)
-                    {
-                        ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Su registro fue exitoso');", true);
-                    }
-                }
+                //dt = u.consultarinscripcionevento(iduser, id);
+                //if (dt.Rows.Count>0)
+                //{
+                //    ClientScript.RegisterStartupScript(this.GetType(), "randontext", "errorinscribir()", true);
+                //}
+                //else
+                //{
+                //    if (u.inscrbirevento(id, iduser) ==true)
+                //    {
+                //        ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Su registro fue exitoso');", true);
+                //    }
+                //}
             }
         }
     }

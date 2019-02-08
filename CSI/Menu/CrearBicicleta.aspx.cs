@@ -30,16 +30,6 @@ namespace CSI.Menu
                     eventos.DataTextField = "nombre_tipo_bicicleta";
                     eventos.DataValueField = "id_tipo_bicicleta";
                     eventos.DataBind();
-                    //dtconsulta = u.TipoBicicletas();
-                    //if (dtconsulta.Rows.Count > 0)
-                    //{
-                    //    drconsulta = dtconsulta.Rows[0];
-                    //    for (int i = 0; i < dtconsulta.Rows.Count; i++)
-                    //    {
-                    //        drconsulta = dtconsulta.Rows[i];
-                    //        eventos.Items.Add(drconsulta["nombre_tipo_bicicleta"].ToString().ToUpper());
-                    //    }
-                    //}
                 }
 
             }
@@ -64,12 +54,13 @@ namespace CSI.Menu
                 }
                 else
                 {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Bicicleta no se creada correctamente');", true);
+                    ClientScript.RegisterStartupScript(this.GetType(), "randontext", "creaciondebici()", true);
+
                 }
             }
             else
             {
-                ClientScript.RegisterStartupScript(this.GetType(), "randontext", "cargarimagen()", true);
+                ClientScript.RegisterStartupScript(this.GetType(), "randontext", "errorcrearbici()", true);
             }
         }
     }

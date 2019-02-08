@@ -24,6 +24,7 @@ namespace CSI.Home
         {
             string username = String.Format("{0}", Request.Form["loginUsername"]);
             string password = String.Format("{0}", Request.Form["loginPassword"]);
+            EnsureChildControls();
             if (!string.IsNullOrWhiteSpace(username) && !string.IsNullOrWhiteSpace(password))
             {
                 dt = u.ValidarPersona(username, password);
