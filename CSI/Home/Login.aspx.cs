@@ -68,7 +68,7 @@ namespace CSI.Home
                             {
                                 dempresa = empresa.Rows[0];
                                 Session["Nombre"] = dempresa["nombre_empresa"].ToString();
-                                Session["IDEMPRESA"] = dempresa["id_empresa"];
+                                Session["IDEMPRESA"] = dempresa["id_empresa"].ToString();
                             }
                         }
                     }

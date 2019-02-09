@@ -6,6 +6,9 @@
         function openModal() {
             $('#myModal').modal('show');
         }
+        function opendescripcionbici() {
+            $('#descripcionbici').modal('show');
+        }
     </script>
     <div class="page">
         <div class="page-content d-flex align-items-stretch">
@@ -31,7 +34,8 @@
                                                 </div>
                                                 <div class="client-title">
                                                     <h3><%#Eval("nombre_bicicleta")%></h3>
-                                                    <span>$ <%#Eval("valor_bicicleta")%> / Hora</span>
+                                                    <span>$ <%#Eval("valor_bicicleta")%> / 4 Hora</span>
+                                                    <span><%#Eval("nombre_empresa")%></span>
                                                     <% if (Session["rol"].ToString() == "Empresa")
                                                         {
                                                     %>
@@ -54,7 +58,9 @@
                                                     <div class="row">
                                                         <div class="col-4">
                                                             <strong>Tipo</strong><br>
-                                                            <span><%#Eval("nombre_tipo_bicicleta") %></span>
+                                                            <asp:LinkButton runat="server" data-target="#myModal" OnCommand="Unnamed_Command" CssClass="" CommandArgument='<%#Eval("nombre_tipo_bicicleta") %>' CommandName="descripcion">
+                                            <%#Eval("nombre_tipo_bicicleta") %>
+                                                            </asp:LinkButton>
                                                         </div>
                                                         <div class="col-4">
                                                             <strong>Talla</strong><br>
@@ -118,6 +124,28 @@
             </div>
         </div>
     </div>
+    <div id="descripcionbici" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
+        <div role="document" class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 id="ModalLabel" class="modal-title">Descripción</h4>
+                    <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="modal-body">
+                    <p>Breve descripcion de.</p>
+                    <form>
+                        <div class="form-group">
+                            <asp:TextBox ID="TextBox1" class="form-control" Enabled="false" runat="server" Width="300"></asp:TextBox>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" data-dismiss="modal" class="btn btn-secondary">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- .content -->
     <script src="../Estilos/Tabla/js/lib/data-table/datatables.min.js"></script>
     <script src="../Estilos/Tabla/js/lib/data-table/dataTables.bootstrap.min.js"></script>
