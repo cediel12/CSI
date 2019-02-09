@@ -12,8 +12,8 @@ namespace CSI.Menu
     public partial class ListaAlquiler : System.Web.UI.Page
     {
         Usuario u = new Usuario();
-        DataTable dt;
-        DataRow dr;
+        DataTable dt,dtcrebici;
+        DataRow dr,drcrebici;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -43,11 +43,15 @@ namespace CSI.Menu
                 dt = u.consultaralquiler(e.CommandArgument.ToString());
                 dr = dt.Rows[0];
                 string idcicla = dr["bicicleta_id_bicicleta"].ToString();
-                if (u.eliminaralquiler(e.CommandArgument.ToString(),idcicla))
+                string alquiladas = dr["alquiladas"].ToString();
+                dtcrebici = u.consulcantidad(Convert.ToInt32(idcicla));
+                drcrebici = dtcrebici.Rows[0];
+                int total = Convert.ToInt32(alquiladas) + Convert.ToInt32(drcrebici["cantidad"]);
+                if (u.actualizarcantidadbici(idcicla,total) && u.eliminaralquiler(e.CommandArgument.ToString(),idcicla))
                 {
-                    ClientScript.RegisterStartupScript(this.GetType(), "randontext", "eliminaralquiler()", true);
-                    
-                }else
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Alquiler eliminado correctamente');", true);
+                }
+                else
                 {
                     ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('No se elimino');", true);
                 }

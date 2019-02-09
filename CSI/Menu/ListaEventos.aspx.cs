@@ -12,8 +12,22 @@ namespace CSI.Menu
     public partial class ListaEventos : System.Web.UI.Page
     {
         Usuario u = new Usuario();
-        DataTable dt, consumodi;
-        DataRow consumo;
+        DataTable dt, consumodi, dtdescrievento;
+        DataRow consumo, drdescrieve;
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            string evemod = nombreevento.Text.ToString();
+            string fechamod = fecha.Text.ToString();
+            string horamod = hora.Text.ToString();
+            string lugarmod = lugar.Text.ToString();
+            string descipmod = descripcion.Text.ToString();
+            if (u.modificarevento(Convert.ToInt32(Session["ideventomod"].ToString()),evemod,fechamod,horamod,lugarmod,descipmod))
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "randontext", "modificarevento()", true);
+            }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -30,7 +44,9 @@ namespace CSI.Menu
                     {
                         lista.DataSource = u.ConsultarEventosempresa(Convert.ToInt32(Session["IDEMPRESA"].ToString()));
                         lista.DataBind();
-                    } else {
+                    }
+                    else
+                    {
                         lista.DataSource = u.ConsultarEventos();
                         lista.DataBind();
                     }
@@ -63,6 +79,7 @@ namespace CSI.Menu
             if (e.CommandName.Equals("modificar"))
             {
                 int id = Convert.ToInt32(e.CommandArgument.ToString());
+                Session["ideventomod"] = id;
                 consumodi = u.consumodievento(id);
                 consumo = consumodi.Rows[0];
                 nombreevento.Text = consumo["nombre_evento"].ToString();
@@ -71,6 +88,15 @@ namespace CSI.Menu
                 lugar.Text = consumo["lugar"].ToString();
                 descripcion.Text = consumo["descripcion"].ToString();
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openModal();", true);
+
+            }
+            if (e.CommandName.Equals("descripcion"))
+            {
+                int id = Convert.ToInt32(e.CommandArgument.ToString());
+                dtdescrievento = u.consultardescripcionevento(id);
+                drdescrieve = dtdescrievento.Rows[0];
+                TextBox1.Text = drdescrieve["descripcion"].ToString();
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "descripcionevento();", true);
 
             }
         }

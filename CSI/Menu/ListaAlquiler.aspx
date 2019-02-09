@@ -17,10 +17,12 @@
                                     <tr>
                                         <th class="th-lg"><a>Nombre</a></th>
                                         <th class="th-lg"><a>Tipo</a></th>
-                                        <th class="th-lg"><a>Valor</a></th>
+                                        <th class="th-lg"><a>Valor Total</a></th>
                                         <th class="th-lg"><a>Empresa</a></th>
                                         <th class="th-lg"><a>Fecha Inicio</a></th>
-                                        <th class="th-lg"><a>Fecha Fin</a></th>
+                                        <th class="th-lg"><a>Cantidad de horas</a></th>
+                                        <th class="th-lg"><a>Codigo Alquiler</a></th>
+                                        <th class="th-lg"><a>Cantidad</a></th>
                                         <th class="th-lg"><a>Cancelar Alquiler</a></th>
 
                                     </tr>
@@ -34,10 +36,12 @@
                                             <tr>
                                                 <td><%#Eval("nombre_bicicleta") %></td>
                                                 <td><%#Eval("nombre_tipo_bicicleta") %></td>
-                                                <td><%#Eval("valor_bicicleta") %></td>
+                                                <td><%#Eval("valor") %></td>
                                                 <td><%#Eval("nombre_empresa") %></td>
-                                                <td><%#Eval("fechainicio") %></td>
                                                 <td><%#Eval("fechafin") %></td>
+                                                <td><%#Eval("horas") %> Horas</td>
+                                                <td><%#Eval("codigoalquiler") %></td>
+                                                <td><%#Eval("alquiladas") %></td>
 
                                                 <td>
                                                     <asp:LinkButton runat="server" OnCommand="cancelaralquiler" CssClass="" CommandArgument='<%#Eval("id_alquiler") %>' CommandName="cancelar">

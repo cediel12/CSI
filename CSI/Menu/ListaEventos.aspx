@@ -6,6 +6,9 @@
         function openModal() {
             $('#mymmodalmodificar').modal('show');
         }
+        function descripcionevento() {
+            $('#descripcionevento').modal('show');
+        }
     </script>
     <div class="content mt-3">
         <div class="animated fadeIn">
@@ -25,6 +28,7 @@
                                         <th class="th-lg"><a>Hora</a></th>
                                         <th class="th-lg"><a>Lugar</a></th>
                                         <th class="th-lg"><a>Organizador</a></th>
+                                        <th class="th-lg"><a>Descripción</a></th>
                                         <% if (Session["rol"].ToString() == "Empresa")
                                             {
                                         %>
@@ -51,7 +55,11 @@
                                                 <td><%#Eval("hora") %></td>
                                                 <td><%#Eval("lugar") %></td>
                                                 <td><%#Eval("nombre_empresa") %></td>
-
+                                                <td>
+                                                    <asp:LinkButton runat="server" data-target="myModal" OnCommand="Unnamed_Command" CssClass="" CommandArgument='<%#Eval("id_evento") %>' CommandName="descripcion">
+                                            Descripción
+                                                    </asp:LinkButton>
+                                                </td>
                                                 <% if (Session["rol"].ToString() == "Empresa")
                                                     {
                                                 %>
@@ -75,8 +83,8 @@
                                                     <asp:LinkButton runat="server" data-target="myModal" OnCommand="Unnamed_Command" CssClass="" CommandArgument='<%#Eval("id_evento") %>' CommandName="registrar">
                                             Participar
                                                     </asp:LinkButton>
-                                                    <%} %>
                                                 </td>
+                                                <%} %>
                                             </tr>
                                         </ItemTemplate>
                                     </asp:ListView>
@@ -97,12 +105,12 @@
         <div role="document" class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 id="exampleModalLabel" class="modal-title">Modificar Evento</h4>
+                    <h4 id="exampleModalLabel" class="modal-title">Tiempo de alquiler</h4>
                     <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
                 </div>
                 <div class="modal-body">
-                    <form>
-                        <div class="form-group">
+
+                    <div class="form-group">
                             <label>Nombre Evento</label>
                             <asp:TextBox ID="nombreevento" class="form-control" autocomplete="off" Height="46" runat="server" placeholder="Nombre"></asp:TextBox>
                         </div>
@@ -122,11 +130,28 @@
                             <label>Descripción</label>
                             <asp:TextBox ID="descripcion" class="form-control" autocomplete="off" Height="46" runat="server" placeholder="Nombre"></asp:TextBox>
                         </div>
-                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
-                    <asp:Button ID="Button1" runat="server" EnableTheming="True" class="btn btn-primary" Text="Actualizar" />
+                    <asp:Button ID="button4" Text="Actualizar" OnClick="Button1_Click" runat="server" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="descripcionevento" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" aria-hidden="true" class="modal fade text-left">
+        <div role="document" class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 id="exampleModalLabel1" class="modal-title">Descripcioón de Tipo de Bicicleta</h4>
+                    <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <asp:TextBox ID="TextBox1" Enabled="false" class="form-control" autocomplete="off" Width="450" runat="server"></asp:TextBox>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
+                    </div>
                 </div>
             </div>
         </div>

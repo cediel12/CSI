@@ -104,7 +104,7 @@ namespace CSI.Models
         }
         public DataTable listadealquileres(int iduser)
         {
-            string sql = "select nombre_bicicleta, valor_bicicleta, nombre_empresa,date_format( fechafin, ' %d/%c/%Y') as  fechafin,date_format( fechainicio, ' %d/%c/%Y') as  fechainicio, id_alquiler,nombre_tipo_bicicleta from cilcicaq.alquiler inner join cilcicaq.bicicleta on bicicleta_id_bicicleta=id_bicicleta inner join cilcicaq.empresa on id_empresa=empresa_id_empresa inner join cilcicaq.tipo_bicicleta on id_tipo_bicicleta=tipo_bicicleta_id_bicicleta where fk_id_cliente=" + iduser + ";";
+            string sql = "select nombre_bicicleta, valor,codigoalquiler,alquiladas, nombre_empresa,date_format( fechafin, ' %d/%c/%Y') as  fechafin,horas, id_alquiler,nombre_tipo_bicicleta from cilcicaq.alquiler inner join cilcicaq.bicicleta on bicicleta_id_bicicleta=id_bicicleta inner join cilcicaq.empresa on id_empresa=empresa_id_empresa inner join cilcicaq.tipo_bicicleta on id_tipo_bicicleta=tipo_bicicleta_id_bicicleta where fk_id_cliente=" + iduser + ";";
             return co.EjecutarConsulta(sql, CommandType.Text);
         }
         public DataTable cargarpais()
@@ -133,10 +133,10 @@ namespace CSI.Models
             sql[0] = "call cilcicaq.registrar('" + usuario + "','" + contraseña + "','" + nombre + "','" + apellido + "','" + edad + "');";
             return co.RealizarTransaccion(sql);
         }
-        public bool alquilarbicicleta(string fechainicio, string fechafin, int idcliente, int idbicicleta, int cantidad,int cantidadalquilada)
+        public bool alquilarbicicleta(string fechainicio, string tiempo, int codigoalquiler, int alquiladas, int valor,int idcliente, int idbici, int cantiupdate)
         {
             string[] sql = new string[1];
-            sql[0] = "call cilcicaq.alquilarbicicleta('" + fechainicio + "','" + fechafin + "'," + idcliente + "," + idbicicleta +","+cantidad+","+cantidadalquilada +");";
+            sql[0] = "call cilcicaq.alquilarbicicleta('" + fechainicio + "','" + tiempo + "'," + codigoalquiler + "," + alquiladas + ","+ valor + ","+ idcliente+","+ idbici+","+ cantiupdate + ");";
             return co.RealizarTransaccion(sql);
         }
         public DataTable maximodealquileres(string a)
@@ -180,6 +180,46 @@ namespace CSI.Models
         {
             string sql = "SELECT * FROM cilcicaq.tipo_bicicleta where nombre_tipo_bicicleta='" + a + "';";
             return co.EjecutarConsulta(sql, CommandType.Text);
+        }
+        public bool actualizarpass(int id, string oldpas, string newpas)
+        {
+            string[] sql = new string[1];
+            sql[0] = "call cilcicaq.Actualizar_password(" + id + ",'" + oldpas + "','" + newpas + "');";
+            return co.RealizarTransaccion(sql);
+        }
+        public DataTable consultarcodigoallquiler(int a)
+        {
+            string sql = "SELECT * FROM cilcicaq.alquiler where codigoalquiler=" + a + ";";
+            return co.EjecutarConsulta(sql, CommandType.Text);
+        }
+        public bool actualizarcantidadbici(string idbici, int cantidad)
+        {
+            string[] sql = new string[1];
+            sql[0] = "update bicicleta set estado_bicicleta='Disponible', cantidad=" + cantidad+" where id_bicicleta="+ idbici + ";";
+            return co.RealizarTransaccion(sql);
+        }
+        public DataTable consultardescripcionevento(int a)
+        {
+            string sql = "SELECT * FROM cilcicaq.evento where id_evento=" + a + ";";
+            return co.EjecutarConsulta(sql, CommandType.Text);
+        }
+        public bool modificarbici(string nombre,string talla, int valor, int cantidad,int idbici,int tipobici)
+        {
+            string[] sql = new string[1];
+            sql[0] = "update cilcicaq.bicicleta set nombre_bicicleta='"+nombre+"',talla='"+talla+"',valor_bicicleta="+valor+",cantidad="+cantidad+ ", tipo_bicicleta_id_bicicleta="+tipobici + " where id_bicicleta=" + idbici + ";";
+            return co.RealizarTransaccion(sql);
+        }
+        public bool eliminarbicicleta( int id)
+        {
+            string[] sql = new string[1];
+            sql[0] = "delete from cilcicaq.bicicleta where id_bicicleta=" + id + ";";
+            return co.RealizarTransaccion(sql);
+        }
+        public bool modificarevento(int idevento,string nombre,string fecha, string hora, string lugar, string descripion)
+        {
+            string[] sql = new string[1];
+            sql[0] = "update cilcicaq.evento set nombre_evento='"+nombre+"', fecha_evento='"+fecha+"', hora='"+hora+"',lugar='"+lugar+"',descripcion='"+descripion+"' where id_evento=" + idevento + ";";
+            return co.RealizarTransaccion(sql);
         }
     }
 }

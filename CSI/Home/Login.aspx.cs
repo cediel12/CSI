@@ -34,7 +34,7 @@ namespace CSI.Home
                     Session["Estado"] = "OK";
                     Session["IDUSER"] = dr["id_correo"].ToString();
                     string iduser = dr["id_correo"].ToString();
-                    //Session["correo"] = dr["correo"].ToString();
+                    Session["correo"] = dr["correo"].ToString();
                     rol = dr["rol_usuario_id_rol_usuario"].ToString();
                     Session["roldefinido"] = dr["rol_usuario_id_rol_usuario"].ToString();
                     if (!string.IsNullOrWhiteSpace(rol))

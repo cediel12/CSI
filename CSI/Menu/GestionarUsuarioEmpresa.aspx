@@ -33,16 +33,16 @@
                     <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    
                         <div class="form-group">
                             <label for="number">Contraseña Actual</label>
-                            <asp:TextBox ID="passold" TextMode="Password" class="form-control" autocomplete="off" runat="server" placeholder="Contraseña Actual"></asp:TextBox>
+                            <asp:TextBox TextMode="Password" ID="passold" class="form-control" autocomplete="off" runat="server" ></asp:TextBox>
                         </div>
                         <div class="form-group">
                             <label for="number">Nueva Contraseña</label>
-                            <asp:TextBox ID="passnew" class="form-control" TextMode="Password" autocomplete="off" runat="server" placeholder="Contraseña Nueva"></asp:TextBox>
+                            <asp:TextBox TextMode="Password" ID="passnew" class="form-control" autocomplete="off" runat="server" ></asp:TextBox>
                         </div>
-                    </form>
+                    
                 </div>
                 <div class="modal-footer">
                     <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
@@ -51,4 +51,5 @@
             </div>
         </div>
     </div>
+
 </asp:Content>
