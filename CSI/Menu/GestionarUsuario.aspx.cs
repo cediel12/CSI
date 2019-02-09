@@ -65,7 +65,7 @@ namespace CSI.Menu
             cambiopas = u.consultarcontracambiopass(iduser, passol);
             if (cambiopas.Rows.Count==1)
             {
-                if (u.cambiarcontrapass(passne, Session["IDUSER"].ToString()))
+                if (u.actualizarpass(iduser,passol, passne))
                 {
                     ClientScript.RegisterStartupScript(this.GetType(), "randontext", "cambiocontranew()", true);
 

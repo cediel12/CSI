@@ -62,11 +62,12 @@ namespace CSI.Menu
         {
             string passol = passold.Text.ToString();
             string passne = passnew.Text.ToString();
-            int iduser = Convert.ToInt32(Session["IDEMPRESA"].ToString());
+
+            int iduser = Convert.ToInt32(Session["IDUSER"].ToString());
             cambiopas = u.consultarcontracambiopass(iduser, passol);
             if (cambiopas.Rows.Count == 1)
             {
-                if (u.cambiarcontrapass(passne, Session["IDUSER"].ToString()))
+
                 {
                     ClientScript.RegisterStartupScript(this.GetType(), "randontext", "cambiocontranew()", true);
 

@@ -139,6 +139,12 @@ namespace CSI.Models
             sql[0] = "call cilcicaq.alquilarbicicleta('" + fechainicio + "','" + fechafin + "'," + idcliente + "," + idbicicleta +","+cantidad+","+cantidadalquilada +");";
             return co.RealizarTransaccion(sql);
         }
+        public bool actualizarpass(int id, string oldpas, string newpas)
+        {
+            string[] sql = new string[1];
+            sql[0] = "call cilcicaq.Actualizar_password(" + id + ",'" + oldpas + "','" + newpas + "');";
+            return co.RealizarTransaccion(sql);
+        }
         public DataTable maximodealquileres(string a)
         {
             string sql = "SELECT count(fk_id_cliente) as reserva from cilcicaq.alquiler where fk_id_cliente=" + a + ";";
