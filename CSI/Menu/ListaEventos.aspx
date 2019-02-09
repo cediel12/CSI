@@ -2,7 +2,11 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <link href="../Estilos/Tabla/css/lib/datatable/dataTables.bootstrap.min.css" rel="stylesheet" />
-
+    <script type="text/javascript">
+        function openModal() {
+            $('#mymmodalmodificar').modal('show');
+        }
+    </script>
     <div class="content mt-3">
         <div class="animated fadeIn">
             <div class="row">
@@ -53,13 +57,13 @@
                                                 %>
                                                 <td>
 
-                                                    <asp:LinkButton runat="server" data-target="myModal" OnCommand="Unnamed_Command" CssClass="" CommandArgument='<%#Eval("id_evento") %>' CommandName="registrar">
+                                                    <asp:LinkButton runat="server" data-target="myModal" OnCommand="Unnamed_Command" CssClass="" CommandArgument='<%#Eval("id_evento") %>' CommandName="modificar">
                                             Modificar
                                                     </asp:LinkButton>
                                                 </td>
                                                 <td>
 
-                                                    <asp:LinkButton runat="server" data-target="myModal" OnCommand="Unnamed_Command" CssClass="" CommandArgument='<%#Eval("id_evento") %>' CommandName="registrar">
+                                                    <asp:LinkButton runat="server" data-target="myModal" OnCommand="Unnamed_Command" CssClass="" CommandArgument='<%#Eval("id_evento") %>' CommandName="eliminar">
                                             Eliminar
                                                     </asp:LinkButton>
                                                 </td>
@@ -89,32 +93,40 @@
         </div>
         <!-- .animated -->
     </div>
-    <div id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
+    <div id="mymmodalmodificar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
         <div role="document" class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 id="exampleModalLabel" class="modal-title">Signin Modal</h4>
+                    <h4 id="exampleModalLabel" class="modal-title">Modificar Evento</h4>
                     <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
                 </div>
                 <div class="modal-body">
-                    <p>Lorem ipsum dolor sit amet consectetur.</p>
                     <form>
                         <div class="form-group">
-                            <label>Email</label>
-                            <input type="email" placeholder="Email Address" class="form-control">
+                            <label>Nombre Evento</label>
+                            <asp:TextBox ID="nombreevento" class="form-control" autocomplete="off" Height="46" runat="server" placeholder="Nombre"></asp:TextBox>
                         </div>
                         <div class="form-group">
-                            <label>Password</label>
-                            <input type="password" placeholder="Password" class="form-control">
+                            <label>Fecha</label>
+                            <asp:TextBox ID="fecha" TextMode="Date" class="form-control" autocomplete="off" Height="46" runat="server" placeholder="Nombre"></asp:TextBox>
                         </div>
                         <div class="form-group">
-                            <input type="submit" value="Signin" class="btn btn-primary">
+                            <label>Hora</label>
+                            <asp:TextBox ID="hora" TextMode="Time" class="form-control" autocomplete="off" Height="46" runat="server" placeholder="Nombre"></asp:TextBox>
+                        </div>
+                        <div class="form-group">
+                            <label>Lugar</label>
+                            <asp:TextBox ID="lugar" class="form-control" autocomplete="off" Height="46" runat="server" placeholder="Nombre"></asp:TextBox>
+                        </div>
+                        <div class="form-group">
+                            <label>Descripción</label>
+                            <asp:TextBox ID="descripcion" class="form-control" autocomplete="off" Height="46" runat="server" placeholder="Nombre"></asp:TextBox>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <asp:Button ID="Button1" runat="server" EnableTheming="True" class="btn btn-primary" Text="Actualizar" />
                 </div>
             </div>
         </div>

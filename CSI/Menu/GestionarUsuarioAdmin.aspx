@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" EnableEventValidation="false" MasterPageFile="~/Menu/Home.Master" AutoEventWireup="true" CodeBehind="GestionarUsuarioAdmin.aspx.cs" Inherits="CSI.Menu.GestionarUsuarioAdmin" %>
+<%@ Page Title="" Language="C#" EnableEventValidation="false" MasterPageFile="~/Menu/Home.Master" AutoEventWireup="true" CodeBehind="GestionarUsuarioAdmin.aspx.cs" Inherits="CSI.Menu.GestionarUsuarioAdmin" %>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
@@ -46,5 +46,4 @@
             </div>
         </div>
     </div>
-
 </asp:Content>

@@ -10,8 +10,8 @@ namespace CSI.Menu
     public partial class ListaBicicletas : System.Web.UI.Page
     {
         Usuario u = new Usuario();
-        public DataTable dt, todo, consulcant;
-        public DataRow dr, drtodo, consucan;
+        public DataTable dt, todo, consulcant,descripcionbici;
+        public DataRow dr, drtodo, consucan,dtdescripcionbici;
         int id, canti;
 
         protected void button4_Click(object sender, EventArgs e)
@@ -110,6 +110,14 @@ namespace CSI.Menu
             if (e.CommandName.Equals("modificar"))
             {
 
+            }
+            if (e.CommandName.Equals("descripcion"))
+            {
+                string descrip = e.CommandArgument.ToString();
+                descripcionbici = u.descripcionbicicleta(descrip);
+                dtdescripcionbici = descripcionbici.Rows[0];
+                TextBox1.Text = dtdescripcionbici["descripcion_tipo_bicleta"].ToString();
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "opendescripcionbici();", true);
             }
         }
         ICollection CreateDataSource()
