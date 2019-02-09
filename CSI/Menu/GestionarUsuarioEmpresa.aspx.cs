@@ -12,7 +12,7 @@ namespace CSI.Menu
     public partial class GestionarUsuarioEmpresa : System.Web.UI.Page
     {
         Usuario u = new Usuario();
-        DataTable empresa;
+        DataTable empresa, cambiopas;
         DataRow drempresa;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -55,6 +55,26 @@ namespace CSI.Menu
                 //{
                 //    ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Los datos no se han podido actualizar');", true);
                 //}
+            }
+        }
+        protected void button4_Click(object sender, EventArgs e)
+        {
+            string passol = passold.Text.ToString();
+            string passne = passnew.Text.ToString();
+            int iduser = Convert.ToInt32(Session["IDUSER"].ToString());
+            cambiopas = u.consultarcontracambiopass(iduser, passol);
+            if (cambiopas.Rows.Count == 1)
+            {
+                if (u.actualizarpass(iduser, passol, passne))
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "randontext", "cambiocontranew()", true);
+
+                }
+            }
+            else
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "randontext", "contranewmal()", true);
+
             }
         }
     }
