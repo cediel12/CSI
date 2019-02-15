@@ -95,16 +95,8 @@
                         <asp:TextBox TextMode="Date" ID="fechainicio" class="form-control" autocomplete="off" runat="server"></asp:TextBox>
                     </div>
                     <div class="form-group">
-                        <label for="number">Cantidad de horas</label>
-                        <asp:DropDownList ID="eventos" class="form-control" AppendDataBoundItems="true" DataTextField="media_name" DataValueField="media_id" runat="server">
-                            <asp:ListItem Value="4">4 Horas</asp:ListItem>
-                            <asp:ListItem Value="8">8 Horas</asp:ListItem>
-                            <asp:ListItem Value="12">12 Horas</asp:ListItem>
-                            <asp:ListItem Value="24">1 Dia</asp:ListItem>
-                            <asp:ListItem Value="48">2 Dias</asp:ListItem>
-                            <asp:ListItem Value="72">3 Dias</asp:ListItem>
-                            <asp:ListItem Value="120">5 Dias</asp:ListItem>
-                        </asp:DropDownList>
+                        <label for="number">Fechan Fin</label>
+                        <asp:TextBox TextMode="Date" ID="fechafin" class="form-control" autocomplete="off" runat="server"></asp:TextBox>
                     </div>
                     <div class="form-group">
                         <label for="number">Cantidad de Bicicletas</label>

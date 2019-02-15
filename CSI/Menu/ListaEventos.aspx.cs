@@ -22,7 +22,7 @@ namespace CSI.Menu
             string horamod = hora.Text.ToString();
             string lugarmod = lugar.Text.ToString();
             string descipmod = descripcion.Text.ToString();
-            if (u.modificarevento(Convert.ToInt32(Session["ideventomod"].ToString()),evemod,fechamod,horamod,lugarmod,descipmod))
+            if (u.modificarevento(Convert.ToInt32(Session["ideventomod"].ToString()), evemod, fechamod, horamod, lugarmod, descipmod))
             {
                 ClientScript.RegisterStartupScript(this.GetType(), "randontext", "modificarevento()", true);
             }
@@ -98,6 +98,14 @@ namespace CSI.Menu
                 TextBox1.Text = drdescrieve["descripcion"].ToString();
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "descripcionevento();", true);
 
+            }
+            if (e.CommandName.Equals("eliminar"))
+            {
+                int id = Convert.ToInt32(e.CommandArgument.ToString());
+                if (u.eliminarevento(id))
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "eliminarevento();", true);
+                }
             }
         }
     }

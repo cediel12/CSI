@@ -652,6 +652,7 @@
     <Content Include="Menu\ListaBicicletas.aspx" />
     <Content Include="Menu\ListaEventos.aspx" />
     <Content Include="Menu\ListaEventosInscritos.aspx" />
+    <Content Include="Menu\MisBicicletas.aspx" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -777,6 +778,13 @@
     </Compile>
     <Compile Include="Menu\ListaEventosInscritos.aspx.designer.cs">
       <DependentUpon>ListaEventosInscritos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Menu\MisBicicletas.aspx.cs">
+      <DependentUpon>MisBicicletas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Menu\MisBicicletas.aspx.designer.cs">
+      <DependentUpon>MisBicicletas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\Conexion.cs" />
     <Compile Include="Models\MenuControlador.cs" />

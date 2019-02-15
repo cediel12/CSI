@@ -1,10 +1,9 @@
-﻿<%@ Page Title="" Language="C#" EnableEventValidation="false" MasterPageFile="~/Menu/Home.Master" AutoEventWireup="true" CodeBehind="ListaAlquiler.aspx.cs" Inherits="CSI.Menu.ListaAlquiler" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Menu/Home.Master" AutoEventWireup="true" CodeBehind="MisBicicletas.aspx.cs" Inherits="CSI.Menu.MisBicicletas" %>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <link href="../Estilos/Tabla/css/lib/datatable/dataTables.bootstrap.min.css" rel="stylesheet" />
     <div class="content mt-3">
         <div class="animated fadeIn">
             <div class="row">
-
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">

@@ -48,13 +48,13 @@ namespace CSI.Menu
                 selection = Convert.ToInt32(eventos.SelectedValue);
                 int idempresa = Convert.ToInt32(Session["IDEMPRESA"].ToString());
                 fileupload1.SaveAs(MapPath(filepth));
-                if (u.crear_bicicleta(nombrebici.Text, idempresa, selection, Convert.ToInt32(valor.Text), talla.Text, imagen))
+                if (u.crear_bicicleta(nombrebici.Text,idempresa,selection,Convert.ToInt32(valor.Text),imagen,talla.Text,Convert.ToInt32(unidades.Text)))
                 {
                     ClientScript.RegisterStartupScript(this.GetType(), "randontext", "creaciondebici()", true);
                 }
                 else
                 {
-                    ClientScript.RegisterStartupScript(this.GetType(), "randontext", "creaciondebici()", true);
+                    ClientScript.RegisterStartupScript(this.GetType(), "randontext", "errorcrearbici()", true);
 
                 }
             }

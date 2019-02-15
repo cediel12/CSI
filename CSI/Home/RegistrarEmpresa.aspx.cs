@@ -23,8 +23,11 @@ namespace CSI.Home
             string usuario = String.Format("{0}", Request.Form["usuario"]);
             string contraseña = String.Format("{0}", Request.Form["contraseña"]);
             string nombre = String.Format("{0}", Request.Form["nombre"]);
-            string apellido = String.Format("{0}", Request.Form["apellido"]);
-            string edad = String.Format("{0}", Request.Form["edad"]);
+            string direccion = String.Format("{0}", Request.Form["direccion"]);
+            string telefono = String.Format("{0}", Request.Form["telefono"]);
+            string nit = String.Format("{0}", Request.Form["nit"]);
+            string correo = String.Format("{0}", Request.Form["correo"]);
+
             dtconsulta = u.consultarusuarioregistro(usuario);
             EnsureChildControls();
             if (dtconsulta.Rows.Count > 0)
@@ -33,7 +36,7 @@ namespace CSI.Home
             }
             else
             {
-                if (u.registrarusuario(nombre, apellido, edad, usuario, contraseña))
+                if (u.registrarempresa(usuario,contraseña,nombre,direccion,telefono,correo,nit))
                 {
                     ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('El registro se completo correctamente');", true);
                 }

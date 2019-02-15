@@ -31,9 +31,9 @@ namespace CSI.Menu
         protected void crear_evento(object sender, EventArgs e)
         {
             int idempresa = Convert.ToInt32(Session["IDEMPRESA"].ToString());
-            if (u.crear_evento(nombreevento.Text, fechafin.Text, hora.Text, idempresa, lugar.Text))
+            if (u.crear_evento(nombreevento.Text, fechafin.Text, hora.Text, idempresa, lugar.Text,descripcion.Text))
             {
-                ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Evento creado correctamente');", true);
+                ClientScript.RegisterStartupScript(this.GetType(), "randontext", "eventocreado()", true);
             }
             else
             {

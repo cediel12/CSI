@@ -12,7 +12,7 @@ namespace CSI.Models
         Conexion co = new Conexion();
         public DataTable ValidarPersona(string usuario, string contrasenia)
         {
-            string sql = "SELECT * FROM cilcicaq.usuario WHERE nombre_usuario = '" + usuario + "' AND constrasena_usuario = '" + contrasenia + "';";
+            string sql = "SELECT * FROM cilcicaq.usuario WHERE nombre_usuario = '" + usuario + "' AND constrasena_usuario = password('" + contrasenia + "');";
             return co.EjecutarConsulta(sql, CommandType.Text);
         }
         public DataTable roladmin(string rol)
@@ -56,11 +56,11 @@ namespace CSI.Models
             string sql = "SELECT id_bicicleta,cantidad,imagen,nombre_bicicleta,valor_bicicleta, talla, estado_bicicleta,nombre_tipo_bicicleta,nombre_empresa from cilcicaq.bicicleta inner join cilcicaq.empresa on id_empresa=empresa_id_empresa inner join cilcicaq.tipo_bicicleta on id_tipo_bicicleta=tipo_bicicleta_id_bicicleta where empresa_id_empresa=" + idempresa + ";";
             return co.EjecutarConsulta(sql, CommandType.Text);
         }
-        public bool crear_bicicleta(string nombrebicicleta, int idempresa, int idtipobicicleta, int valor, string tipo, string imagen)
+        public bool crear_bicicleta(string nombrebicicleta, int idempresa, int idtipobicicleta, int valor, string imagen,string talla,int cantidad)
         {
             string[] sql = new string[1];
             //sql[0] = "CALL `cilcicaq`.`crear_bicicleta`('" + nombrebicicleta + "'," + idempresa + "," + idtipobicicleta +"," + valor +",'"+tipo+"','"+imagen+"');";
-            sql[0] = "call cilcicaq.crear_bicicleta('" + nombrebicicleta + "'," + idempresa + "," + idtipobicicleta + "," + valor + ",'" + tipo + "','" + imagen + "');";
+            sql[0] = "call cilcicaq.crear_bicicleta('"+nombrebicicleta+"', "+idempresa+","+ idtipobicicleta + ","+ valor+", '"+talla+"', '"+imagen+"',"+cantidad +");";
             return co.RealizarTransaccion(sql);
         }
         public DataTable TipoBicicletas()
@@ -68,10 +68,10 @@ namespace CSI.Models
             string sql = "SELECT * FROM cilcicaq.tipo_bicicleta;";
             return co.EjecutarConsulta(sql, CommandType.Text);
         }
-        public bool crear_evento(string nombreevento, string fechaevento, string hora, int idempresa, string lugar)
+        public bool crear_evento(string nombreevento, string fechaevento, string hora, int idempresa, string lugar,string descripcion)
         {
             string[] sql = new string[1];
-            sql[0] = "CALL `cilcicaq`.`crear_evento`('" + nombreevento + "','" + fechaevento + "','" + hora + "'," + idempresa + ",'" + lugar + "')";
+            sql[0] = "call cilcicaq.crear_evento('"+nombreevento+"', '"+fechaevento+"', '"+ hora + "',"+ idempresa + ", '"+ lugar + "', '"+ descripcion + "');";
             return co.RealizarTransaccion(sql);
         }        
         public bool inscrbirevento(int idevento, int idcliente)
@@ -102,6 +102,12 @@ namespace CSI.Models
             sql[0] = "update cilcicaq.cliente set nombre_cliente='" + nombre + "', apellido_cliente='" + apellido + "', edad_cliente=" + edad + ", where usuario_id_correo=" + idcliente + ";";
             return co.RealizarTransaccion(sql);
         }
+        public bool actualizarempresa(string nombre, string apellido, string edad, string idcliente)
+        {
+            string[] sql = new string[1];
+            sql[0] = "update cilcicaq.cliente set nombre_cliente='" + nombre + "', apellido_cliente='" + apellido + "', edad_cliente=" + edad + ", where usuario_id_correo=" + idcliente + ";";
+            return co.RealizarTransaccion(sql);
+        }
         public DataTable listadealquileres(int iduser)
         {
             string sql = "select nombre_bicicleta, valor,codigoalquiler,alquiladas, nombre_empresa,date_format( fechafin, ' %d/%c/%Y') as  fechafin,horas, id_alquiler,nombre_tipo_bicicleta from cilcicaq.alquiler inner join cilcicaq.bicicleta on bicicleta_id_bicicleta=id_bicicleta inner join cilcicaq.empresa on id_empresa=empresa_id_empresa inner join cilcicaq.tipo_bicicleta on id_tipo_bicicleta=tipo_bicicleta_id_bicicleta where fk_id_cliente=" + iduser + ";";
@@ -127,10 +133,16 @@ namespace CSI.Models
             string sql = "SELECT * FROM cilcicaq.usuario where nombre_usuario='" + a + "';";
             return co.EjecutarConsulta(sql, CommandType.Text);
         }
-        public bool registrarusuario(string nombre, string apellido, string edad, string usuario, string contraseña)
+        public bool registrarusuario(string nombre, string apellido, string edad, string usuario, string contraseña,string correo)
         {
             string[] sql = new string[1];
-            sql[0] = "call cilcicaq.registrar('" + usuario + "','" + contraseña + "','" + nombre + "','" + apellido + "','" + edad + "');";
+            sql[0] = "call cilcicaq.registrar('"+usuario+"', '"+contraseña+"', '"+nombre+"', '"+apellido+"', '"+edad+"', '"+correo+"');";
+            return co.RealizarTransaccion(sql);
+        }
+        public bool registrarempresa(string usuario, string contraseña,string nombreempresa,string direccion,string telefono,string correo, string nit)
+        {
+            string[] sql = new string[1];
+            sql[0] = "call cilcicaq.registrarempresa('"+usuario+"', '"+contraseña+"', '"+nombreempresa+"', '"+direccion+"', '"+telefono+"', '"+correo+"', '"+nit+"');";
             return co.RealizarTransaccion(sql);
         }
         public bool alquilarbicicleta(string fechainicio, string tiempo, int codigoalquiler, int alquiladas, int valor,int idcliente, int idbici, int cantiupdate)
@@ -139,6 +151,7 @@ namespace CSI.Models
             sql[0] = "call cilcicaq.alquilarbicicleta('" + fechainicio + "','" + tiempo + "'," + codigoalquiler + "," + alquiladas + ","+ valor + ","+ idcliente+","+ idbici+","+ cantiupdate + ");";
             return co.RealizarTransaccion(sql);
         }
+        
         public DataTable maximodealquileres(string a)
         {
             string sql = "SELECT count(fk_id_cliente) as reserva from cilcicaq.alquiler where fk_id_cliente=" + a + ";";
@@ -180,13 +193,7 @@ namespace CSI.Models
         {
             string sql = "SELECT * FROM cilcicaq.tipo_bicicleta where nombre_tipo_bicicleta='" + a + "';";
             return co.EjecutarConsulta(sql, CommandType.Text);
-        }
-        public bool actualizarpass(int id, string oldpas, string newpas)
-        {
-            string[] sql = new string[1];
-            sql[0] = "call cilcicaq.Actualizar_password(" + id + ",'" + oldpas + "','" + newpas + "');";
-            return co.RealizarTransaccion(sql);
-        }
+        }        
         public DataTable consultarcodigoallquiler(int a)
         {
             string sql = "SELECT * FROM cilcicaq.alquiler where codigoalquiler=" + a + ";";
@@ -209,6 +216,12 @@ namespace CSI.Models
             sql[0] = "update cilcicaq.bicicleta set nombre_bicicleta='"+nombre+"',talla='"+talla+"',valor_bicicleta="+valor+",cantidad="+cantidad+ ", tipo_bicicleta_id_bicicleta="+tipobici + " where id_bicicleta=" + idbici + ";";
             return co.RealizarTransaccion(sql);
         }
+        public bool actualizarpass(int id, string oldpas, string newpas)
+        {
+            string[] sql = new string[1];
+            sql[0] = "call cilcicaq.Actualizar_password(" + id + ",'" + oldpas + "','" + newpas + "');";
+            return co.RealizarTransaccion(sql);
+        }
         public bool eliminarbicicleta( int id)
         {
             string[] sql = new string[1];
@@ -219,6 +232,12 @@ namespace CSI.Models
         {
             string[] sql = new string[1];
             sql[0] = "update cilcicaq.evento set nombre_evento='"+nombre+"', fecha_evento='"+fecha+"', hora='"+hora+"',lugar='"+lugar+"',descripcion='"+descripion+"' where id_evento=" + idevento + ";";
+            return co.RealizarTransaccion(sql);
+        }
+        public bool eliminarevento(int idevento)
+        {
+            string[] sql = new string[1];
+            sql[0] = "delete from cilcicaq.evento where id_evento=" + idevento + ";";
             return co.RealizarTransaccion(sql);
         }
     }

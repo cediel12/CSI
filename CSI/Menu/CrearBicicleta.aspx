@@ -22,7 +22,7 @@
             </div>
              <div class="form-group">
                 <label for="number">Unidades</label>
-                <asp:TextBox ID="unidades" class="form-control" Height="46" autocomplete="off" runat="server" placeholder="Tipo"></asp:TextBox>
+                <asp:TextBox ID="unidades" TextMode="Number" class="form-control" Height="46" autocomplete="off" runat="server" placeholder="Tipo"></asp:TextBox>
             </div>
             <div class="form-group">
                 <label for="first-name">Tipo de Bicicleta</label>

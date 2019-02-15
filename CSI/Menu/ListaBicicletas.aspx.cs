@@ -22,7 +22,7 @@ namespace CSI.Menu
             if (max < 5)
             {
                 string fechainic = fechainicio.Text.ToString();
-                string tiempo = eventos.SelectedValue.ToString();
+                string tiempo = fechafin.Text.ToString();
                 int asd = Convert.ToInt32(cantidadalqui.SelectedValue.ToString());
                 int cantidadfinal = Convert.ToInt32(Session["cantibicisdispo"].ToString()) - asd;
                 Random r = new Random();
