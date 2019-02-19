@@ -80,9 +80,20 @@ namespace CSI.Models
             sql[0] = "call cilcicaq.inscribirevento(" + idevento + "," + idcliente + ");";
             return co.RealizarTransaccion(sql);
         }
+        public bool creartipobicicleta(string tipo, string descripcion)
+        {
+            string[] sql = new string[1];
+            sql[0] = "call cilcicaq.creartipobicicleta('" + tipo + "','" + descripcion + "');";
+            return co.RealizarTransaccion(sql);
+        }
         public DataTable consultarinscripcionevento(int iduser, int idevento)
         {
             string sql = "SELECT * FROM cilcicaq.evento_usuario where evento_id_evento=" + idevento + " and usuario_id_usuario=" + iduser + ";";
+            return co.EjecutarConsulta(sql, CommandType.Text);
+        }
+        public DataTable culsutartipobiciunico(int idbici)
+        {
+            string sql = "SELECT * FROM cilcicaq.tipo_bicicleta where id_tipo_bicicleta=" + idbici + ";";
             return co.EjecutarConsulta(sql, CommandType.Text);
         }
         public DataTable eventosinscritosconsulta(int iduser)
@@ -94,6 +105,18 @@ namespace CSI.Models
         {
             string[] sql = new string[1];
             sql[0] = "call cilcicaq.eliminarinscripcion(" + idevento + ");";
+            return co.RealizarTransaccion(sql);
+        }
+        public bool modificartipobici(int idtipo,string tipo, string descrip)
+        {
+            string[] sql = new string[1];
+            sql[0] = "update cilcicaq.tipo_bicicleta set nombre_tipo_bicicleta='"+tipo+"', descripcion_tipo_bicleta='"+descrip+"' where id_tipo_bicicleta=" + idtipo + ";";
+            return co.RealizarTransaccion(sql);
+        }
+        public bool eliminartipobici(int idtipo)
+        {
+            string[] sql = new string[1];
+            sql[0] = "delete from cilcicaq.tipo_bicicleta where id_tipo_bicicleta=" + idtipo + ";";
             return co.RealizarTransaccion(sql);
         }
         public bool actualizarcliente(string nombre, string apellido, string edad, string idcliente)
@@ -110,7 +133,17 @@ namespace CSI.Models
         }
         public DataTable listadealquileres(int iduser)
         {
-            string sql = "select nombre_bicicleta, valor,codigoalquiler,alquiladas, nombre_empresa,date_format( fechafin, ' %d/%c/%Y') as  fechafin,horas, id_alquiler,nombre_tipo_bicicleta from cilcicaq.alquiler inner join cilcicaq.bicicleta on bicicleta_id_bicicleta=id_bicicleta inner join cilcicaq.empresa on id_empresa=empresa_id_empresa inner join cilcicaq.tipo_bicicleta on id_tipo_bicicleta=tipo_bicicleta_id_bicicleta where fk_id_cliente=" + iduser + ";";
+            string sql = "select nombre_bicicleta, valor,codigoalquiler,alquiladas, nombre_empresa,date_format( fechafin, ' %d/%c/%Y') as  fechafin,date_format( fechainicio, ' %d/%c/%Y') as  fechainicio,estado, id_alquiler,nombre_tipo_bicicleta from cilcicaq.alquiler inner join cilcicaq.bicicleta on bicicleta_id_bicicleta=id_bicicleta inner join cilcicaq.empresa on id_empresa=empresa_id_empresa inner join cilcicaq.tipo_bicicleta on id_tipo_bicicleta=tipo_bicicleta_id_bicicleta where fk_id_cliente=" + iduser + ";";
+            return co.EjecutarConsulta(sql, CommandType.Text);
+        }
+        public DataTable listaempresas()
+        {
+            string sql = "SELECT * FROM cilcicaq.empresa;";
+            return co.EjecutarConsulta(sql, CommandType.Text);
+        }
+        public DataTable listadealquileresempresa(int iduser)
+        {
+            string sql = "select nombre_bicicleta, valor,codigoalquiler,alquiladas, nombre_empresa,date_format( fechafin, ' %d/%c/%Y') as  fechafin,date_format( fechainicio, ' %d/%c/%Y') as  fechainicio,estado, id_alquiler,nombre_tipo_bicicleta from cilcicaq.alquiler inner join cilcicaq.bicicleta on bicicleta_id_bicicleta=id_bicicleta inner join cilcicaq.empresa on id_empresa=empresa_id_empresa inner join cilcicaq.tipo_bicicleta on id_tipo_bicicleta=tipo_bicicleta_id_bicicleta where id_empresa=" + iduser + ";";
             return co.EjecutarConsulta(sql, CommandType.Text);
         }
         public DataTable cargarpais()
@@ -145,10 +178,10 @@ namespace CSI.Models
             sql[0] = "call cilcicaq.registrarempresa('"+usuario+"', '"+contraseña+"', '"+nombreempresa+"', '"+direccion+"', '"+telefono+"', '"+correo+"', '"+nit+"');";
             return co.RealizarTransaccion(sql);
         }
-        public bool alquilarbicicleta(string fechainicio, string tiempo, int codigoalquiler, int alquiladas, int valor,int idcliente, int idbici, int cantiupdate)
+        public bool alquilarbicicleta(string fechainicio, string fechafin, int codigoalquiler, int alquiladas, int valor,int idcliente, int idbici)
         {
             string[] sql = new string[1];
-            sql[0] = "call cilcicaq.alquilarbicicleta('" + fechainicio + "','" + tiempo + "'," + codigoalquiler + "," + alquiladas + ","+ valor + ","+ idcliente+","+ idbici+","+ cantiupdate + ");";
+            sql[0] = "call cilcicaq.alquilarbicicleta('"+fechainicio+"', '"+fechafin+"', "+codigoalquiler+", "+alquiladas+","+ valor+", "+idcliente+", "+idbici+");";
             return co.RealizarTransaccion(sql);
         }
         
@@ -162,10 +195,10 @@ namespace CSI.Models
             string sql = "SELECT * FROM cilcicaq.alquiler where id_alquiler=" + a + ";";
             return co.EjecutarConsulta(sql, CommandType.Text);
         }
-        public bool eliminaralquiler(string idalquiler, string idcicla)
+        public bool eliminaralquiler(string idalquiler)
         {
             string[] sql = new string[1];
-            sql[0] = "call cilcicaq.eliminaralquiler(" + idalquiler + "," + idcicla + ");";
+            sql[0] = "delete from cilcicaq.alquiler where id_alquiler=" + idalquiler +";";
             return co.RealizarTransaccion(sql);
         }
         public DataTable consultarcontracambiopass(int a, string b)
@@ -198,16 +231,15 @@ namespace CSI.Models
         {
             string sql = "SELECT * FROM cilcicaq.alquiler where codigoalquiler=" + a + ";";
             return co.EjecutarConsulta(sql, CommandType.Text);
-        }
-        public bool actualizarcantidadbici(string idbici, int cantidad)
-        {
-            string[] sql = new string[1];
-            sql[0] = "update bicicleta set estado_bicicleta='Disponible', cantidad=" + cantidad+" where id_bicicleta="+ idbici + ";";
-            return co.RealizarTransaccion(sql);
-        }
+        }        
         public DataTable consultardescripcionevento(int a)
         {
             string sql = "SELECT * FROM cilcicaq.evento where id_evento=" + a + ";";
+            return co.EjecutarConsulta(sql, CommandType.Text);
+        }
+        public DataTable consultarfechasalquiler(int a)
+        {
+            string sql = "SELECT fechainicio,fechafin,alquiladas FROm cilcicaq.alquiler where bicicleta_id_bicicleta=" + a + ";";
             return co.EjecutarConsulta(sql, CommandType.Text);
         }
         public bool modificarbici(string nombre,string talla, int valor, int cantidad,int idbici,int tipobici)
@@ -238,6 +270,18 @@ namespace CSI.Models
         {
             string[] sql = new string[1];
             sql[0] = "delete from cilcicaq.evento where id_evento=" + idevento + ";";
+            return co.RealizarTransaccion(sql);
+        }
+        public bool cancelaralquier(string idalquiler)
+        {
+            string[] sql = new string[1];
+            sql[0] = "update cilcicaq.alquiler set estado='Cancelado' where id_alquiler=" + idalquiler + ";";
+            return co.RealizarTransaccion(sql);
+        }
+        public bool confirmaralquiler(string idalquiler)
+        {
+            string[] sql = new string[1];
+            sql[0] = "update cilcicaq.alquiler set estado='Confirmado' where id_alquiler=" + idalquiler + ";";
             return co.RealizarTransaccion(sql);
         }
     }

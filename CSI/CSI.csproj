@@ -641,17 +641,19 @@
     <Content Include="Home\Login.aspx" />
     <Content Include="Home\RegistrarEmpresa.aspx" />
     <Content Include="Home\Signup.aspx" />
-    <Content Include="Menu\Alquilar.aspx" />
     <Content Include="Menu\CrearBicicleta.aspx" />
     <Content Include="Menu\CrearEvento.aspx" />
+    <Content Include="Menu\CrearTipoBicicleta.aspx" />
     <Content Include="Menu\GestionarUsuario.aspx" />
     <Content Include="Menu\GestionarUsuarioAdmin.aspx" />
     <Content Include="Menu\GestionarUsuarioEmpresa.aspx" />
     <Content Include="Menu\Home.aspx" />
     <Content Include="Menu\ListaAlquiler.aspx" />
     <Content Include="Menu\ListaBicicletas.aspx" />
+    <Content Include="Menu\ListaEmpresas.aspx" />
     <Content Include="Menu\ListaEventos.aspx" />
     <Content Include="Menu\ListaEventosInscritos.aspx" />
+    <Content Include="Menu\ListaTipoBicicleta.aspx" />
     <Content Include="Menu\MisBicicletas.aspx" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
@@ -695,13 +697,6 @@
     <Compile Include="Home\Signup.aspx.designer.cs">
       <DependentUpon>Signup.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Menu\Alquilar.aspx.cs">
-      <DependentUpon>Alquilar.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Menu\Alquilar.aspx.designer.cs">
-      <DependentUpon>Alquilar.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Menu\CrearBicicleta.aspx.cs">
       <DependentUpon>CrearBicicleta.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -715,6 +710,13 @@
     </Compile>
     <Compile Include="Menu\CrearEvento.aspx.designer.cs">
       <DependentUpon>CrearEvento.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Menu\CrearTipoBicicleta.aspx.cs">
+      <DependentUpon>CrearTipoBicicleta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Menu\CrearTipoBicicleta.aspx.designer.cs">
+      <DependentUpon>CrearTipoBicicleta.aspx</DependentUpon>
     </Compile>
     <Compile Include="Menu\GestionarUsuario.aspx.cs">
       <DependentUpon>GestionarUsuario.aspx</DependentUpon>
@@ -765,6 +767,13 @@
     <Compile Include="Menu\ListaBicicletas.aspx.designer.cs">
       <DependentUpon>ListaBicicletas.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Menu\ListaEmpresas.aspx.cs">
+      <DependentUpon>ListaEmpresas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Menu\ListaEmpresas.aspx.designer.cs">
+      <DependentUpon>ListaEmpresas.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Menu\ListaEventos.aspx.cs">
       <DependentUpon>ListaEventos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -778,6 +787,13 @@
     </Compile>
     <Compile Include="Menu\ListaEventosInscritos.aspx.designer.cs">
       <DependentUpon>ListaEventosInscritos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Menu\ListaTipoBicicleta.aspx.cs">
+      <DependentUpon>ListaTipoBicicleta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Menu\ListaTipoBicicleta.aspx.designer.cs">
+      <DependentUpon>ListaTipoBicicleta.aspx</DependentUpon>
     </Compile>
     <Compile Include="Menu\MisBicicletas.aspx.cs">
       <DependentUpon>MisBicicletas.aspx</DependentUpon>

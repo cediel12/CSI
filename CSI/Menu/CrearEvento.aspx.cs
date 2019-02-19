@@ -15,7 +15,7 @@ namespace CSI.Menu
         {
             try
             {
-                Session["direccion"] = "Crear Evento";
+                Session["direccion"] = "Eventos / Crear Evento";
                 Session["entrada"] = "1";
                 EnsureChildControls();
                 if (Session["Estado"].ToString() != "OK")

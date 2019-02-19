@@ -45,7 +45,7 @@
                                                     <%}
                                                         else
                                                         {%>
-                                                    <asp:LinkButton runat="server" data-target="#myModal" OnCommand="Unnamed_Command" CssClass="" CommandArgument='<%#Eval("id_bicicleta")%>' CommandName="registrar">
+                                                    <asp:LinkButton runat="server" data-target="#myModal" OnCommand="Unnamed_Command" CssClass=""  CommandArgument='<%#Eval("id_bicicleta")%>' CommandName="registrar">
                                             Reservar
                                                     </asp:LinkButton>
                                                     <%

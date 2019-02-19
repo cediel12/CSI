@@ -10,43 +10,34 @@
 namespace CSI.Menu {
     
     
-    public partial class Alquilar {
+    public partial class ListaTipoBicicleta {
         
         /// <summary>
-        /// Control form1.
+        /// Control lista.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.ListView lista;
         
         /// <summary>
-        /// Control fechainicio.
+        /// Control tipo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox fechainicio;
+        protected global::System.Web.UI.WebControls.TextBox tipo;
         
         /// <summary>
-        /// Control eventos.
+        /// Control descripcion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList eventos;
-        
-        /// <summary>
-        /// Control cantidadalqui.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList cantidadalqui;
+        protected global::System.Web.UI.WebControls.TextBox descripcion;
         
         /// <summary>
         /// Control button4.

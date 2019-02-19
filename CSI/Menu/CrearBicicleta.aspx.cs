@@ -18,7 +18,7 @@ namespace CSI.Menu
         {
             try
             {
-                Session["direccion"] = "Crear Bicicleta";
+                Session["direccion"] = "Bicicletas / Crear Bicicleta";
                 Session["entrada"] = "1";
                 if (Session["Estado"].ToString() != "OK")
                 {

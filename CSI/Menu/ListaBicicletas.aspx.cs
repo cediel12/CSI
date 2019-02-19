@@ -10,8 +10,8 @@ namespace CSI.Menu
     public partial class ListaBicicletas : System.Web.UI.Page
     {
         Usuario u = new Usuario();
-        public DataTable dt, todo, consulcant, descripcionbici, codigoalquiler,dtmodibici;
-        public DataRow dr, drtodo, consucan, dtdescripcionbici,drmodibici;
+        public DataTable dt, todo, consulcant, descripcionbici, codigoalquiler, dtmodibici, dtculsualq;
+        public DataRow dr, drtodo, consucan, dtdescripcionbici, drmodibici, drconsualq;
         int id, canti;
 
         protected void button4_Click(object sender, EventArgs e)
@@ -22,31 +22,38 @@ namespace CSI.Menu
             if (max < 5)
             {
                 string fechainic = fechainicio.Text.ToString();
-                string tiempo = fechafin.Text.ToString();
+                string fechafi = fechafin.Text.ToString();
+                int diasalquiler = 1 + Convert.ToInt32(calculardiasalquier(fechainic, fechafi));
                 int asd = Convert.ToInt32(cantidadalqui.SelectedValue.ToString());
-                int cantidadfinal = Convert.ToInt32(Session["cantibicisdispo"].ToString()) - asd;
-                Random r = new Random();
-                int multi = Convert.ToInt32(tiempo) / 4;
-                int valoruni = multi * Convert.ToInt32(Session["valorbiciunitaria"].ToString());
-                int nAleatorio3;
-                int valorpagar = valoruni* asd;
-                while (true)
+                if (verificaralquiler(fechainic, fechafi, Convert.ToInt32(Session["idbicialquiler"]), asd, Convert.ToInt32(Session["cantibicisdispo"])))
                 {
-                    nAleatorio3 = r.Next(10000, 99990);
-                    codigoalquiler = u.consultarcodigoallquiler(nAleatorio3);
-                    if (codigoalquiler.Rows.Count == 0)
+
+                    int cantidadfinal = Convert.ToInt32(Session["cantibicisdispo"].ToString()) - asd;
+                    Random r = new Random();
+                    int valoruni = diasalquiler * Convert.ToInt32(Session["valorbiciunitaria"].ToString());
+                    int nAleatorio3;
+                    int valorpagar = valoruni * asd;
+                    while (true)
                     {
-                        break;
+                        nAleatorio3 = r.Next(10000, 99990);
+                        codigoalquiler = u.consultarcodigoallquiler(nAleatorio3);
+                        if (codigoalquiler.Rows.Count == 0)
+                        {
+                            break;
+                        }
                     }
-                }
-                if (u.alquilarbicicleta(fechainic,tiempo,nAleatorio3,asd,valorpagar,Convert.ToInt32(Session["IDCliente"].ToString()),Convert.ToInt32(Session["idbicialquiler"].ToString()),cantidadfinal))
+                    if (u.alquilarbicicleta(fechainic, fechafi, nAleatorio3, asd, valorpagar, Convert.ToInt32(Session["IDCliente"]), Convert.ToInt32(Session["idbicialquiler"])))
+                    {
+                        confirmaralquiler(Session["correo"].ToString(), Session["nombre_bicicletamensaje"].ToString(), asd, valorpagar, nAleatorio3, fechainic);
+                        ClientScript.RegisterStartupScript(this.GetType(), "randontext", "alquilerrealizado()", true);
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('No se realizo el alquiler');", true);
+                    }
+                }else
                 {
-                    confirmaralquiler(Session["correo"].ToString(), Session["nombre_bicicletamensaje"].ToString(), asd, valorpagar, nAleatorio3, fechainic);
-                    ClientScript.RegisterStartupScript(this.GetType(), "randontext", "alquilerrealizado()", true);
-                }
-                else
-                {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('No se realizo el alquiler');", true);
+                    ClientScript.RegisterStartupScript(this.GetType(), "randontext", "erroralquilar()", true);
                 }
             }
             else
@@ -59,7 +66,7 @@ namespace CSI.Menu
         {
             try
             {
-                Session["direccion"] = "Lista de Bicicletas";
+                Session["direccion"] = "Bicicletas / Lista de Bicicletas";
                 Session["entrada"] = "1";
                 if (Session["Estado"].ToString() != "OK")
                 {
@@ -180,7 +187,7 @@ namespace CSI.Menu
             return dr;
 
         }
-        public void confirmaralquiler(string correo, string nombrebici, int cantidad,int valor, int codigoalquiler,string fecha)
+        public void confirmaralquiler(string correo, string nombrebici, int cantidad, int valor, int codigoalquiler, string fecha)
         {
             /*-------------------------MENSAJE DE CORREO----------------------*/
 
@@ -200,13 +207,13 @@ namespace CSI.Menu
             //mmsg.Bcc.Add("destinatariocopia@servidordominio.com"); //Opcional
 
             //Cuerpo del Mensaje
-            mmsg.Body = "Su alquiler fue exitoso, se solicita ir a la empresa y cancelar la reserva de la(s) bicicletas en un plazo maximo de 6 horas laborales"+ System.Environment.NewLine
-                + System.Environment.NewLine+
-                "Bicicleta: "+ nombrebici + System.Environment.NewLine +
-                "Cantidades: " + cantidad + System.Environment.NewLine+
-                "Valor total: "+ valor + System.Environment.NewLine +
-                "Codigo alquiler: " +codigoalquiler + System.Environment.NewLine+
-                "Fecha de alquiler: "+ fecha;
+            mmsg.Body = "Su alquiler fue exitoso, se solicita ir a la empresa y cancelar la reserva de la(s) bicicletas en un plazo maximo de 6 horas laborales" + System.Environment.NewLine
+                + System.Environment.NewLine +
+                "Bicicleta: " + nombrebici + System.Environment.NewLine +
+                "Cantidades: " + cantidad + System.Environment.NewLine +
+                "Valor total: " + valor + System.Environment.NewLine +
+                "Codigo alquiler: " + codigoalquiler + System.Environment.NewLine +
+                "Fecha de alquiler: " + fecha;
             mmsg.BodyEncoding = System.Text.Encoding.UTF8;
             mmsg.IsBodyHtml = false; //Si no queremos que se envíe como HTML
 
@@ -242,6 +249,66 @@ namespace CSI.Menu
             catch (System.Net.Mail.SmtpException)
             {
             }
+        }
+        public string calculardiasalquier(string fechainicio, string fechafin)
+        {
+            DateTime startdate;
+            DateTime enddate;
+            TimeSpan remaindate;
+
+            startdate = DateTime.Parse(fechainicio).Date;
+            enddate = DateTime.Parse(fechafin).Date;
+
+            remaindate = enddate - startdate;
+            string dias;
+            if (remaindate != null)
+            {
+                dias = "" + remaindate.TotalDays;
+                return dias;
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public bool verificaralquiler(string fechainicio, string fechafin, int bici, int cantidadalquiladas, int cantidadtotal)
+        {
+            DateTime startdate, fechainibd;
+            DateTime enddate, fechafinbd;
+            startdate = DateTime.Parse(fechainicio).Date;
+            enddate = DateTime.Parse(fechafin).Date;
+            dtculsualq = u.consultarfechasalquiler(bici);
+            if (dtculsualq.Rows.Count > 0)
+            {
+                for (int i = 0; i <= dtculsualq.Rows.Count; i++)
+                {
+                    drconsualq = dtculsualq.Rows[i];
+                    fechainibd = DateTime.Parse(drconsualq["fechainicio"].ToString()).Date;
+                    fechafinbd = DateTime.Parse(drconsualq["fechafin"].ToString()).Date;
+                    int alquiladas = Convert.ToInt32(drconsualq["alquiladas"].ToString());
+                    if (startdate > fechainibd && fechainibd < fechafinbd || startdate < fechainibd && fechainibd < fechafinbd || startdate > fechainibd && fechainibd > fechafinbd)
+                    {
+                        int de = cantidadtotal - alquiladas;
+                        if (de >= cantidadalquiladas)
+                        {
+                            return true;
+                        }
+                        else if (de < cantidadalquiladas)
+                        {
+                            return false;
+                        }
+                    }
+                    else if (fechainibd > fechafinbd)
+                    {
+                        return true;
+                    }
+                }
+            }
+            else
+            {
+                return true;
+            }
+            return true;
         }
     }
 }

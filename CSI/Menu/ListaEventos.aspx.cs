@@ -32,7 +32,7 @@ namespace CSI.Menu
         {
             try
             {
-                Session["direccion"] = "Lista de Eventos";
+                Session["direccion"] = "Eventos / Lista de Eventos";
                 Session["entrada"] = "1";
                 if (Session["Estado"].ToString() != "OK")
                 {

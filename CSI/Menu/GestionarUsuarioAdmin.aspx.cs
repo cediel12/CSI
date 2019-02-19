@@ -18,7 +18,7 @@ namespace CSI.Menu
         {
             try
             {
-                Session["direccion"] = "Gestionar Usuario";
+                Session["direccion"] = "Gestionar Usuario / Gestionar Usuario";
                 Session["entrada"] = "1";
                 if (Session["Estado"].ToString() != "OK")
                 {

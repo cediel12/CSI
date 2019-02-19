@@ -10,19 +10,19 @@
         <from>
             <div class="form-group">
                 <label for="first-name">Nombre</label>
-                <asp:TextBox ID="nombrebici" class="form-control" Height="46" autocomplete="off" runat="server" placeholder="Nombre"></asp:TextBox>
+                <asp:TextBox ID="nombrebici" class="form-control" Height="46" required="required" autocomplete="off" runat="server" placeholder="Nombre"></asp:TextBox>
             </div>
             <div class="form-group">
                 <label for="number">Valor</label>
-                <asp:TextBox ID="valor" class="form-control" Height="46" autocomplete="off" runat="server" placeholder="Valor"></asp:TextBox>
+                <asp:TextBox ID="valor" class="form-control" Height="46" required="required" autocomplete="off" runat="server" placeholder="Valor"></asp:TextBox>
             </div>
             <div class="form-group">
                 <label for="number">Talla</label>
-                <asp:TextBox ID="talla" class="form-control" Height="46" autocomplete="off" runat="server" placeholder="Tipo"></asp:TextBox>
+                <asp:TextBox ID="talla" class="form-control" Height="46" required="required" autocomplete="off" runat="server" placeholder="Talla"></asp:TextBox>
             </div>
              <div class="form-group">
                 <label for="number">Unidades</label>
-                <asp:TextBox ID="unidades" TextMode="Number" class="form-control" Height="46" autocomplete="off" runat="server" placeholder="Tipo"></asp:TextBox>
+                <asp:TextBox ID="unidades" TextMode="Number" class="form-control" required="required" Height="46" autocomplete="off" runat="server" placeholder="Unidades"></asp:TextBox>
             </div>
             <div class="form-group">
                 <label for="first-name">Tipo de Bicicleta</label>
