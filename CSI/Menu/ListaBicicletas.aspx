@@ -42,6 +42,9 @@
                                                     <asp:LinkButton runat="server" data-target="#myModal" OnCommand="Unnamed_Command" CssClass="" CommandArgument='<%#Eval("id_bicicleta")%>' CommandName="Eliminar">
                                             Eliminar
                                                     </asp:LinkButton>
+                                                    <asp:LinkButton runat="server" data-target="#myModal" OnCommand="Unnamed_Command" CssClass="" CommandArgument='<%#Eval("id_bicicleta")%>' CommandName="editar">
+                                            Unidades
+                                                    </asp:LinkButton>
                                                     <%}
                                                         else
                                                         {%>

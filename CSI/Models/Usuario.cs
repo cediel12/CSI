@@ -48,12 +48,12 @@ namespace CSI.Models
         }
         public DataTable ConsultarBicicletas()
         {
-            string sql = "SELECT id_bicicleta,cantidad,imagen,nombre_bicicleta,talla,valor_bicicleta, estado_bicicleta,nombre_tipo_bicicleta,nombre_empresa from cilcicaq.bicicleta inner join cilcicaq.empresa on id_empresa=empresa_id_empresa inner join cilcicaq.tipo_bicicleta on id_tipo_bicicleta=tipo_bicicleta_id_bicicleta where estado_bicicleta='Disponible' and cantidad>0;";
+            string sql = "SELECT id_bicicleta,cantidad,imagen,nombre_bicicleta,talla,valor_bicicleta, estado_bicicleta,nombre_tipo_bicicleta,nombre_empresa from cilcicaq.bicicleta inner join cilcicaq.empresa on id_empresa=empresa_id_empresa inner join cilcicaq.tipo_bicicleta on id_tipo_bicicleta=tipo_bicicleta_id_bicicleta where estado=1 and estado_bicicleta='Disponible' and cantidad>0;";
             return co.EjecutarConsulta(sql, CommandType.Text);
         }
         public DataTable ConsultarBicicletasempresa(int idempresa)
         {
-            string sql = "SELECT id_bicicleta,cantidad,imagen,nombre_bicicleta,valor_bicicleta, talla, estado_bicicleta,nombre_tipo_bicicleta,nombre_empresa from cilcicaq.bicicleta inner join cilcicaq.empresa on id_empresa=empresa_id_empresa inner join cilcicaq.tipo_bicicleta on id_tipo_bicicleta=tipo_bicicleta_id_bicicleta where empresa_id_empresa=" + idempresa + ";";
+            string sql = "SELECT id_bicicleta,cantidad,imagen,nombre_bicicleta,valor_bicicleta, talla, estado_bicicleta,nombre_tipo_bicicleta,nombre_empresa from cilcicaq.bicicleta inner join cilcicaq.empresa on id_empresa=empresa_id_empresa inner join cilcicaq.tipo_bicicleta on id_tipo_bicicleta=tipo_bicicleta_id_bicicleta where estado=1 and empresa_id_empresa=" + idempresa + ";";
             return co.EjecutarConsulta(sql, CommandType.Text);
         }
         public bool crear_bicicleta(string nombrebicicleta, int idempresa, int idtipobicicleta, int valor, string imagen,string talla,int cantidad)
@@ -133,7 +133,7 @@ namespace CSI.Models
         }
         public DataTable listadealquileres(int iduser)
         {
-            string sql = "select nombre_bicicleta, valor,codigoalquiler,alquiladas, nombre_empresa,date_format( fechafin, ' %d/%c/%Y') as  fechafin,date_format( fechainicio, ' %d/%c/%Y') as  fechainicio,estado, id_alquiler,nombre_tipo_bicicleta from cilcicaq.alquiler inner join cilcicaq.bicicleta on bicicleta_id_bicicleta=id_bicicleta inner join cilcicaq.empresa on id_empresa=empresa_id_empresa inner join cilcicaq.tipo_bicicleta on id_tipo_bicicleta=tipo_bicicleta_id_bicicleta where fk_id_cliente=" + iduser + ";";
+            string sql = "select nombre_bicicleta, valor,codigoalquiler,alquiladas, nombre_empresa,date_format( fechafin, ' %d/%c/%Y') as  fechafin,date_format( fechainicio, ' %d/%c/%Y') as  fechainicio,alquiler.estado, id_alquiler,nombre_tipo_bicicleta from cilcicaq.alquiler inner join cilcicaq.bicicleta on bicicleta_id_bicicleta=id_bicicleta inner join cilcicaq.empresa on id_empresa=empresa_id_empresa inner join cilcicaq.tipo_bicicleta on id_tipo_bicicleta=tipo_bicicleta_id_bicicleta where cilcicaq.alquiler.activo=1 and fk_id_cliente=" + iduser + ";";
             return co.EjecutarConsulta(sql, CommandType.Text);
         }
         public DataTable listaempresas()
@@ -143,7 +143,7 @@ namespace CSI.Models
         }
         public DataTable listadealquileresempresa(int iduser)
         {
-            string sql = "select nombre_bicicleta, valor,codigoalquiler,alquiladas, nombre_empresa,date_format( fechafin, ' %d/%c/%Y') as  fechafin,date_format( fechainicio, ' %d/%c/%Y') as  fechainicio,estado, id_alquiler,nombre_tipo_bicicleta from cilcicaq.alquiler inner join cilcicaq.bicicleta on bicicleta_id_bicicleta=id_bicicleta inner join cilcicaq.empresa on id_empresa=empresa_id_empresa inner join cilcicaq.tipo_bicicleta on id_tipo_bicicleta=tipo_bicicleta_id_bicicleta where id_empresa=" + iduser + ";";
+            string sql = "select nombre_bicicleta, valor,codigoalquiler,alquiladas, nombre_empresa,date_format( fechafin, ' %d/%c/%Y') as  fechafin,date_format( fechainicio, ' %d/%c/%Y') as  fechainicio,alquiler.estado, id_alquiler,nombre_tipo_bicicleta from cilcicaq.alquiler inner join cilcicaq.bicicleta on bicicleta_id_bicicleta=id_bicicleta inner join cilcicaq.empresa on id_empresa=empresa_id_empresa inner join cilcicaq.tipo_bicicleta on id_tipo_bicicleta=tipo_bicicleta_id_bicicleta where id_empresa=" + iduser + ";";
             return co.EjecutarConsulta(sql, CommandType.Text);
         }
         public DataTable cargarpais()
@@ -190,6 +190,11 @@ namespace CSI.Models
             string sql = "SELECT count(fk_id_cliente) as reserva from cilcicaq.alquiler where fk_id_cliente=" + a + ";";
             return co.EjecutarConsulta(sql, CommandType.Text);
         }
+        public DataTable consultarunidades(int a)
+        {
+            string sql = "select nombre_bicicleta,idbici_unidades,referencia from cilcicaq.bicicleta inner join cilcicaq.bici_unidades on bicicleta_id=id_bicicleta where bicicleta_id=" + a + ";";
+            return co.EjecutarConsulta(sql, CommandType.Text);
+        }
         public DataTable consultaralquiler(string a)
         {
             string sql = "SELECT * FROM cilcicaq.alquiler where id_alquiler=" + a + ";";
@@ -210,6 +215,12 @@ namespace CSI.Models
         {
             string[] sql = new string[1];
             sql[0] = "update cilcicaq.usuario set constrasena_usuario=" + a + "where id_correo=" + b + ";";
+            return co.RealizarTransaccion(sql);
+        }
+        public bool updatereferencia(string a, string b)
+        {
+            string[] sql = new string[1];
+            sql[0] = "update cilcicaq.bici_unidades set referencia='" + a + "' where idbici_unidades=" + b + ";";
             return co.RealizarTransaccion(sql);
         }
         public DataTable consulcantidad(int a)
@@ -237,9 +248,24 @@ namespace CSI.Models
             string sql = "SELECT * FROM cilcicaq.evento where id_evento=" + a + ";";
             return co.EjecutarConsulta(sql, CommandType.Text);
         }
-        public DataTable consultarfechasalquiler(int a)
+        public DataTable consultarfechasalquiler(string fechainicio,string fechafin, int a)
         {
-            string sql = "SELECT fechainicio,fechafin,alquiladas FROm cilcicaq.alquiler where bicicleta_id_bicicleta=" + a + ";";
+            string sql = "SELECT count(idbici_unidades) as alquiladas FROm cilcicaq.bicicleta inner join cilcicaq.bici_unidades on id_bicicleta=bicicleta_id inner join cilcicaq.unidad_alquiler on id_bici_unid_fk=idbici_unidades inner join cilcicaq.alquiler on id_alquiler_fk=id_alquiler where id_bicicleta="+a+ " and ('"+fechainicio+"' between fechainicio and fechafin or'"+fechafin+"' between fechainicio and fechafin) and cilcicaq.alquiler.activo=1;";
+            return co.EjecutarConsulta(sql, CommandType.Text);
+        }
+        public DataTable consultarfechasalquilerunitaria(string fechainicio, string fechafin, int a)
+        {
+            string sql = "SELECT idbici_unidades FROm cilcicaq.bicicleta inner join cilcicaq.bici_unidades on id_bicicleta=bicicleta_id inner join cilcicaq.unidad_alquiler on id_bici_unid_fk=idbici_unidades inner join cilcicaq.alquiler on id_alquiler_fk=id_alquiler where idbici_unidades=" + a + " and ('" + fechainicio + "' between fechainicio and fechafin or'" + fechafin + "' between fechainicio and fechafin) and cilcicaq.alquiler.activo=1;";
+            return co.EjecutarConsulta(sql, CommandType.Text);
+        }
+        public DataTable consultarunibici( int a)
+        {
+            string sql = "SELECT idbici_unidades FROm cilcicaq.bicicleta inner join cilcicaq.bici_unidades on id_bicicleta=bicicleta_id where id_bicicleta=" + a +";";
+            return co.EjecutarConsulta(sql, CommandType.Text);
+        }
+        public DataTable consultaridalquiler(int a)
+        {
+            string sql = "SELECT * FROM cilcicaq.alquiler where codigoalquiler=" + a + ";";
             return co.EjecutarConsulta(sql, CommandType.Text);
         }
         public bool modificarbici(string nombre,string talla, int valor, int cantidad,int idbici,int tipobici)
@@ -254,10 +280,16 @@ namespace CSI.Models
             sql[0] = "call cilcicaq.Actualizar_password(" + id + ",'" + oldpas + "','" + newpas + "');";
             return co.RealizarTransaccion(sql);
         }
+        public bool unidad_alquilerinset(int idbiciuni, int idalquier)
+        {
+            string[] sql = new string[1];
+            sql[0] = "call cilcicaq.unidad_alquiler(" + idbiciuni + "," + idalquier  + ");";
+            return co.RealizarTransaccion(sql);
+        }
         public bool eliminarbicicleta( int id)
         {
             string[] sql = new string[1];
-            sql[0] = "delete from cilcicaq.bicicleta where id_bicicleta=" + id + ";";
+            sql[0] = "update cilcicaq.bicicleta set estado=0 where id_bicicleta=" + id + ";";
             return co.RealizarTransaccion(sql);
         }
         public bool modificarevento(int idevento,string nombre,string fecha, string hora, string lugar, string descripion)

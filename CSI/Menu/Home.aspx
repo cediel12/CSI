@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" EnableEventValidation="false" MasterPageFile="~/Menu/Home.Master" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="CSI.Menu.Home" %>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <link href="../Estilos/styles.css" rel="stylesheet" />
     <div class="container" id="advanced-search-form">

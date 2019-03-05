@@ -12,8 +12,7 @@ namespace CSI.Menu
     public partial class MisBicicletas : System.Web.UI.Page
     {
         Usuario u = new Usuario();
-        DataTable dt, dtcrebici;
-        DataRow dr, drcrebici;
+        DataTable dt;
         protected void Page_Load(object sender, EventArgs e)
         {
             try

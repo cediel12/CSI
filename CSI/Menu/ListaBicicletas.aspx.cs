@@ -10,8 +10,8 @@ namespace CSI.Menu
     public partial class ListaBicicletas : System.Web.UI.Page
     {
         Usuario u = new Usuario();
-        public DataTable dt, todo, consulcant, descripcionbici, codigoalquiler, dtmodibici, dtculsualq;
-        public DataRow dr, drtodo, consucan, dtdescripcionbici, drmodibici, drconsualq;
+        public DataTable dt, todo, consulcant, descripcionbici, codigoalquiler, dtmodibici, obteneridalquiler;
+        public DataRow dr, drtodo, consucan, dtdescripcionbici, drmodibici, idalquilerbd;
         int id, canti;
 
         protected void button4_Click(object sender, EventArgs e)
@@ -24,15 +24,15 @@ namespace CSI.Menu
                 string fechainic = fechainicio.Text.ToString();
                 string fechafi = fechafin.Text.ToString();
                 int diasalquiler = 1 + Convert.ToInt32(calculardiasalquier(fechainic, fechafi));
-                int asd = Convert.ToInt32(cantidadalqui.SelectedValue.ToString());
-                if (verificaralquiler(fechainic, fechafi, Convert.ToInt32(Session["idbicialquiler"]), asd, Convert.ToInt32(Session["cantibicisdispo"])))
+                int alquiladas = Convert.ToInt32(cantidadalqui.SelectedValue.ToString());
+                if (verificaralquiler(fechainic, fechafi, Convert.ToInt32(Session["idbicialquiler"]), alquiladas, Convert.ToInt32(Session["cantibicisdispo"])))
                 {
 
-                    int cantidadfinal = Convert.ToInt32(Session["cantibicisdispo"].ToString()) - asd;
+                    int cantidadfinal = Convert.ToInt32(Session["cantibicisdispo"].ToString()) - alquiladas;
                     Random r = new Random();
                     int valoruni = diasalquiler * Convert.ToInt32(Session["valorbiciunitaria"].ToString());
                     int nAleatorio3;
-                    int valorpagar = valoruni * asd;
+                    int valorpagar = valoruni * alquiladas;
                     while (true)
                     {
                         nAleatorio3 = r.Next(10000, 99990);
@@ -42,16 +42,40 @@ namespace CSI.Menu
                             break;
                         }
                     }
-                    if (u.alquilarbicicleta(fechainic, fechafi, nAleatorio3, asd, valorpagar, Convert.ToInt32(Session["IDCliente"]), Convert.ToInt32(Session["idbicialquiler"])))
+                    if (u.alquilarbicicleta(fechainic, fechafi, nAleatorio3, alquiladas, valorpagar, Convert.ToInt32(Session["IDCliente"]), Convert.ToInt32(Session["idbicialquiler"])))
                     {
-                        confirmaralquiler(Session["correo"].ToString(), Session["nombre_bicicletamensaje"].ToString(), asd, valorpagar, nAleatorio3, fechainic);
+                        DataTable uni = u.consultarunibici(Convert.ToInt32(Session["idbicialquiler"]));
+                        DataRow uniid;
+                        int suma = 0;
+                        for (int i = 0; i < uni.Rows.Count; i++)
+                        {
+                            uniid = uni.Rows[i];
+                            int id = Convert.ToInt32(uniid["idbici_unidades"].ToString());
+                            if (verificaralquilerunitaria(fechainic, fechafi, id))
+                            {
+                                //falta obtener el id del alquiler con el numero aleatoreo y realizar la incersion
+                                obteneridalquiler = u.consultaridalquiler(nAleatorio3);
+                                idalquilerbd = obteneridalquiler.Rows[0];
+                                int idalqui = Convert.ToInt32(idalquilerbd["id_alquiler"].ToString());
+                                if (u.unidad_alquilerinset(id, idalqui))
+                                {
+                                    suma += 1;
+                                }
+                                if (suma == alquiladas)
+                                {
+                                    break;
+                                }
+                            }
+                        }
+                        confirmaralquiler(Session["correo"].ToString(), Session["nombre_bicicletamensaje"].ToString(), alquiladas, valorpagar, nAleatorio3, fechainic);
                         ClientScript.RegisterStartupScript(this.GetType(), "randontext", "alquilerrealizado()", true);
                     }
                     else
                     {
                         ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('No se realizo el alquiler');", true);
                     }
-                }else
+                }
+                else
                 {
                     ClientScript.RegisterStartupScript(this.GetType(), "randontext", "erroralquilar()", true);
                 }
@@ -110,6 +134,13 @@ namespace CSI.Menu
         }
         public void Unnamed_Command(object sender, CommandEventArgs e)
         {
+            if (e.CommandName.Equals("editar"))
+            {
+                int id = Convert.ToInt32(e.CommandArgument.ToString());
+                Session["idbiciuni"] = id;
+                Response.Redirect("UnidadesBicicleta.aspx");
+
+            }
             if (e.CommandName.Equals("Eliminar"))
             {
                 int id = Convert.ToInt32(e.CommandArgument.ToString());
@@ -273,42 +304,38 @@ namespace CSI.Menu
         }
         public bool verificaralquiler(string fechainicio, string fechafin, int bici, int cantidadalquiladas, int cantidadtotal)
         {
-            DateTime startdate, fechainibd;
-            DateTime enddate, fechafinbd;
-            startdate = DateTime.Parse(fechainicio).Date;
-            enddate = DateTime.Parse(fechafin).Date;
-            dtculsualq = u.consultarfechasalquiler(bici);
+            DataTable dtculsualq = u.consultarfechasalquiler(fechainicio, fechafin, bici);
             if (dtculsualq.Rows.Count > 0)
             {
-                for (int i = 0; i <= dtculsualq.Rows.Count; i++)
+                DataRow drconsualq = dtculsualq.Rows[0];
+                int alquiladas = Convert.ToInt32(drconsualq["alquiladas"].ToString());
+                int libres = cantidadtotal - alquiladas;
+                if (libres >= cantidadalquiladas)
                 {
-                    drconsualq = dtculsualq.Rows[i];
-                    fechainibd = DateTime.Parse(drconsualq["fechainicio"].ToString()).Date;
-                    fechafinbd = DateTime.Parse(drconsualq["fechafin"].ToString()).Date;
-                    int alquiladas = Convert.ToInt32(drconsualq["alquiladas"].ToString());
-                    if (startdate > fechainibd && fechainibd < fechafinbd || startdate < fechainibd && fechainibd < fechafinbd || startdate > fechainibd && fechainibd > fechafinbd)
-                    {
-                        int de = cantidadtotal - alquiladas;
-                        if (de >= cantidadalquiladas)
-                        {
-                            return true;
-                        }
-                        else if (de < cantidadalquiladas)
-                        {
-                            return false;
-                        }
-                    }
-                    else if (fechainibd > fechafinbd)
-                    {
-                        return true;
-                    }
+                    return true;
                 }
+                else
+                {
+                    return false;
+                }
+
             }
             else
             {
                 return true;
             }
-            return true;
+        }
+        public bool verificaralquilerunitaria(string fechainicio, string fechafin, int biciunitario)
+        {
+            DataTable dtculsualq = u.consultarfechasalquilerunitaria(fechainicio, fechafin, biciunitario);
+            if (dtculsualq.Rows.Count > 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
     }
 }

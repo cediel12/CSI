@@ -31,13 +31,13 @@ namespace CSI.Menu {
         protected global::System.Web.UI.WebControls.TextBox valor;
         
         /// <summary>
-        /// Control talla.
+        /// Control tallalista.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox talla;
+        protected global::System.Web.UI.WebControls.DropDownList tallalista;
         
         /// <summary>
         /// Control unidades.

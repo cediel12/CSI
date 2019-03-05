@@ -101,6 +101,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Estilos\avatar-2.jpg" />
+    <Content Include="Estilos\Calendario\fullcalendar.css" />
+    <Content Include="Estilos\Calendario\fullcalendar.js" />
+    <Content Include="Estilos\Calendario\fullcalendar.print.css" />
+    <Content Include="Estilos\Calendario\jquery\jquery-1.10.2.js" />
+    <Content Include="Estilos\Calendario\jquery\jquery-ui.custom.min.js" />
     <Content Include="Estilos\Men\css\custom.css" />
     <Content Include="Estilos\Men\css\fontastic.css" />
     <Content Include="Estilos\Men\css\style.blue.css" />
@@ -638,6 +643,7 @@
     <Content Include="Estilos\Tabla\js\vendor\jquery-2.1.4.min.js" />
     <Content Include="Estilos\Tabla\js\vendor\modernizr-2.8.3.min.js" />
     <Content Include="Estilos\Tabla\js\widgets.js" />
+    <Content Include="Home\calendario.aspx" />
     <Content Include="Home\Login.aspx" />
     <Content Include="Home\RegistrarEmpresa.aspx" />
     <Content Include="Home\Signup.aspx" />
@@ -655,6 +661,7 @@
     <Content Include="Menu\ListaEventosInscritos.aspx" />
     <Content Include="Menu\ListaTipoBicicleta.aspx" />
     <Content Include="Menu\MisBicicletas.aspx" />
+    <Content Include="Menu\UnidadesBicicleta.aspx" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -663,6 +670,7 @@
     <Content Include="Estilos\Tabla\css\bootstrap.css.map" />
     <Content Include="Estilos\Tabla\css\bootstrap.min.css.map" />
     <Content Include="Estilos\Tabla\css\style.css.map" />
+    <Content Include="Estilos\Calendario\jquery\.DS_Store" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -676,6 +684,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Home\calendario.aspx.cs">
+      <DependentUpon>calendario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home\calendario.aspx.designer.cs">
+      <DependentUpon>calendario.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Home\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -801,6 +816,13 @@
     </Compile>
     <Compile Include="Menu\MisBicicletas.aspx.designer.cs">
       <DependentUpon>MisBicicletas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Menu\UnidadesBicicleta.aspx.cs">
+      <DependentUpon>UnidadesBicicleta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Menu\UnidadesBicicleta.aspx.designer.cs">
+      <DependentUpon>UnidadesBicicleta.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\Conexion.cs" />
     <Compile Include="Models\MenuControlador.cs" />

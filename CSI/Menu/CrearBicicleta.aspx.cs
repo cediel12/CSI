@@ -44,11 +44,12 @@ namespace CSI.Menu
             {
                 string filepth = "~/scr/" + fileupload1.FileName;
                 int selection = 0;
+                string talla = tallalista.SelectedValue;
                 string imagen = fileupload1.FileName;
                 selection = Convert.ToInt32(eventos.SelectedValue);
-                int idempresa = Convert.ToInt32(Session["IDEMPRESA"].ToString());
                 fileupload1.SaveAs(MapPath(filepth));
-                if (u.crear_bicicleta(nombrebici.Text,idempresa,selection,Convert.ToInt32(valor.Text),imagen,talla.Text,Convert.ToInt32(unidades.Text)))
+                int idempresa = Convert.ToInt32(Session["IDEMPRESA"].ToString());
+                if (u.crear_bicicleta(nombrebici.Text,idempresa,selection,Convert.ToInt32(valor.Text),imagen,talla,Convert.ToInt32(unidades.Text)))
                 {
                     ClientScript.RegisterStartupScript(this.GetType(), "randontext", "creaciondebici()", true);
                 }

@@ -13,7 +13,7 @@ namespace CSI.Menu
     {
         Usuario u = new Usuario();
         DataTable cliente,cambiopas;
-        DataRow drcliente,cambionew;
+        DataRow drcliente;
         protected void Page_Load(object sender, EventArgs e)
         {
             try

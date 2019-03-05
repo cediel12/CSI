@@ -12,8 +12,6 @@ namespace CSI.Menu
     public partial class ListaAlquiler : System.Web.UI.Page
     {
         Usuario u = new Usuario();
-        DataTable dt,dtcrebici;
-        DataRow dr,drcrebici;
         protected void Page_Load(object sender, EventArgs e)
         {
             try

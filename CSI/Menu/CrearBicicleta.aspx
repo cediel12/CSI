@@ -18,7 +18,13 @@
             </div>
             <div class="form-group">
                 <label for="number">Talla</label>
-                <asp:TextBox ID="talla" class="form-control" Height="46" required="required" autocomplete="off" runat="server" placeholder="Talla"></asp:TextBox>
+                <asp:DropDownList ID="tallalista" class="form-control" Height="46" AppendDataBoundItems="true" DataTextField="media_name" DataValueField="media_id" runat="server">
+                    <asp:ListItem Value="XS"> XS </asp:ListItem>
+                            <asp:ListItem Value="S"> S </asp:ListItem>
+                            <asp:ListItem Value="L"> M </asp:ListItem>
+                            <asp:ListItem Value="L"> L </asp:ListItem>
+                            <asp:ListItem Value="XL"> XL </asp:ListItem>
+            </asp:DropDownList>
             </div>
              <div class="form-group">
                 <label for="number">Unidades</label>
@@ -27,6 +33,7 @@
             <div class="form-group">
                 <label for="first-name">Tipo de Bicicleta</label>
                 <asp:DropDownList ID="eventos" class="form-control" Height="46" AppendDataBoundItems="true" DataTextField="media_name" DataValueField="media_id" runat="server">
+
             </asp:DropDownList>
         </div>
             <div class="form-group">

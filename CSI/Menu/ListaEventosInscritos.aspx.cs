@@ -12,8 +12,6 @@ namespace CSI.Menu
     public partial class ListaEventosInscritos : System.Web.UI.Page
     {
         Usuario u = new Usuario();
-        private DataTable dt;
-        private DataRow druser;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
